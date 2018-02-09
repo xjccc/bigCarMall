@@ -1,0 +1,147 @@
+@font-face {
+  font-family: 'carMall'; /* project id 521894 */
+  src: url('//at.alicdn.com/t/font_521894_p4xy1ikp2nhtzkt9.eot');
+  src: url('//at.alicdn.com/t/font_521894_p4xy1ikp2nhtzkt9.eot?#iefix')
+      format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_521894_p4xy1ikp2nhtzkt9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_521894_p4xy1ikp2nhtzkt9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_521894_p4xy1ikp2nhtzkt9.svg#iconfont')
+      format('svg');
+}
+html,
+body {
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+figcaption,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form {
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
+  font-weight: 400;
+  -webkit-text-size-adjust: none;
+}
+
+body,
+select,
+textarea,
+input {
+  font: 32px/1.5 'Microsoft YaHei', Arial;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+var,
+em,
+i {
+  font-style: normal;
+}
+
+a img {
+  border: 0 none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0);
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+input:focus:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0);
+}
+
+input:-ms-input-placeholder {
+  color: #999;
+}
+
+input[type='search'],
+input[type='text'],
+input[type='tel'],
+input[type='number'],
+input[type='date'],
+input[type='password'],
+button,
+select,
+textarea,
+input[type='submit'] {
+  -webkit-appearance: none;
+  -webkit-border-image: none;
+  border-image: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  border: 0 none;
+  outline: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  padding: 0;
+  font-weight: 400;
+}
+
+.clearfix:after {
+  content: '.';
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  font-size: 0;
+}

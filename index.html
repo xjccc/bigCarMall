@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="【卡车之家大车市】为您提供{今年}本地(/{地区})载货车、牵引车、自卸车等货车报价、优惠、促销信息。卡车之家大车市，值得信赖的线上购车商城。">
+    <meta name="keywords" content="货车报价,卡车价格,货车特价,货车促销,货车优惠,大车市">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>大车市</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+  		var phoneScale = parseInt(window.screen.width) / 750
+if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+  if (parseFloat(RegExp.$1) > 2.3) {
+    document.write(
+      '<meta name="viewport" content="width=750, minimum-scale=' +
+        phoneScale +
+        ', maximum-scale=' +
+        phoneScale +
+        ', target-densitydpi=device-dpi" />'
+    )
+  } else {
+    document.write(
+      '<meta name="viewport" content="width=750, target-densitydpi=device-dpi" />'
+    )
+  }
+} else {
+  document.write(
+    '<meta name="viewport" content="width=750,user-scalable=no, minimum-scale=' +
+      phoneScale +
+      ', maximum-scale=' +
+      phoneScale +
+      '" />'
+  )
+}
+</script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  </body>
+</html>
