@@ -95,7 +95,7 @@ export default {
     status() {
       switch (this.productState) {
         case 2:
-          return '活动结束'
+          return '已下架'
         case 3:
           return '已抢光'
         case 4:
@@ -157,62 +157,31 @@ export default {
     // 分享当前页
     shareNowPage() {
       let wx = window.wx
-      this.getData(
-        `https://saasm.360che.com.cn/newsaasapi/WeiXin/WXJSsignature.aspx?${+new Date()}`,
-        res => {
-          if (res.data.status === 1) {
-            let data = res.data
-            // 注册微信信息
-            wx.config({
-              debug: false,
-              appId: data.data.appId,
-              timestamp: data.data.timestamp,
-              nonceStr: data.data.noncestr,
-              signature: data.data.signature,
-              jsApiList: [
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'hideMenuItems',
-                'showMenuItems',
-                'showAllNonBaseMenuItem',
-                'hideAllNonBaseMenuItem'
-              ]
-            })
-            wx.ready(() => {
-              wx.hideAllNonBaseMenuItem()
-              wx.onMenuShareTimeline({
-                title: `${
-                  this.carInfoData.product_name
-                }报价_手机卡车之家大车市`, // 分享标题
-                link: location.href, // 分享链接
-                imgUrl: this.imgData[0].ImgUrl, // 分享图标
-                success: () => {}
-              })
-              wx.onMenuShareAppMessage({
-                title: `${
-                  this.carInfoData.product_name
-                }报价_手机卡车之家大车市`, // 分享标题
-                desc: `${this.carInfoData.product_name}报价：商城价${
-                  this.carInfoData.VehiclePrice
-                }万元,${this.carInfoData.Introduction}。${
-                  this.carInfoData.product_name
-                }价格信息，由【卡车之家大车市】提供。`, // 分享描述
-                link: location.href, // 分享链接
-                imgUrl: this.imgData[0].ImgUrl, // 分享图标
-                type: '',
-                dataUrl: '',
-                success: () => {}
-              })
-              wx.showMenuItems({
-                menuList: [
-                  'menuItem:share:appMessage',
-                  'menuItem:share:timeline'
-                ]
-              })
-            })
-          }
-        }
-      )
+      wx.ready(() => {
+        wx.hideAllNonBaseMenuItem()
+        wx.onMenuShareTimeline({
+          title: `${this.carInfoData.product_name}报价_手机卡车之家大车市`, // 分享标题
+          link: location.href, // 分享链接
+          imgUrl: this.imgData[0].ImgUrl, // 分享图标
+          success: () => {}
+        })
+        wx.onMenuShareAppMessage({
+          title: `${this.carInfoData.product_name}报价_手机卡车之家大车市`, // 分享标题
+          desc: `${this.carInfoData.product_name}报价：商城价${
+            this.carInfoData.VehiclePrice
+          }万元,${this.carInfoData.Introduction}。${
+            this.carInfoData.product_name
+          }价格信息，由【卡车之家大车市】提供。`, // 分享描述
+          link: location.href, // 分享链接
+          imgUrl: this.imgData[0].ImgUrl, // 分享图标
+          type: '',
+          dataUrl: '',
+          success: () => {}
+        })
+        wx.showMenuItems({
+          menuList: ['menuItem:share:appMessage', 'menuItem:share:timeline']
+        })
+      })
     },
     // 先获取用户登录
     getUserUid() {

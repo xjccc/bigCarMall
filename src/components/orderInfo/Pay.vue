@@ -1,8 +1,8 @@
 <template>
   <div class="pay" :class="showPay ? 'content-visible' : ''" @touchmove.prevent>
     <div class="mask" :class="showPay ? 'visible' : 'visible-none'" @click="close"></div>
-    <div class="pay-content" :class="[showPay ? 'content-visible' : '', getType() === 'app' ? 'all-content' : '']">
-      <div class="content">
+    <div class="pay-content" :class="showPay ? 'content-visible' : ''">
+      <div class="content" :class="getType() !== 'weixin' ? 'all-content' : ''">
         <div class="item">
           <div class="item-pay-header">
             <span>支付金额</span>
@@ -13,7 +13,7 @@
           <span>订单有效期5分钟，请在有效期内及时付款。</span>
         </div>
         <!-- 微信支付  paytype-bottom-->
-        <div class="choose-paytype" @click="changeType('wx')" v-if="getType() === 'weixin'">
+        <div class="choose-paytype" :class="getType() !== 'weixin' ? 'paytype-bottom' : ''" @click="changeType('wx')">
           <span class="wx-icon"></span>
           <div class="type-content">
             <span class="choose-title">微信支付</span>
@@ -22,7 +22,7 @@
           <span class="choose" :class="type === 2 ? 'select' : ''"></span>
         </div>
         <!-- 支付宝支付 -->
-        <div class="choose-paytype" @click="changeType('zfb')" v-if="getType() === 'm'">
+        <div class="choose-paytype" @click="changeType('zfb')" v-if="getType() !== 'weixin'">
           <span class="zfb-icon"></span>
           <div class="type-content">
             <span class="choose-title">支付宝支付</span>
@@ -40,21 +40,26 @@ export default {
   props: ['showPay', 'payMoney'],
   data: () => ({
     // 选择支付类型  1、支付宝  2、微信
-    type: ''
+    type: 2
   }),
-  created() {
-    if (this.getType() === 'm') {
-      this.type = 1
-    } else {
-      this.type = 2
-    }
-  },
+  // created() {
+  //   if (this.getType() === 'm') {
+  //     this.type = 1
+  //   } else {
+  //     this.type = 2
+  //   }
+  // },
   methods: {
     close() {
       this.$emit('close')
     },
     pay() {
-      this.$emit('pay', this.type)
+      // 如果是m端的微信需要传type为3
+      let type = this.type
+      if (this.getType() === 'm' && type === 2) {
+        type = 3
+      }
+      this.$emit('pay', type)
     },
     changeType(type) {
       if (type === 'wx') {

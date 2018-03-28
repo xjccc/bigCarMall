@@ -137,8 +137,6 @@ export default {
     }
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     // 获取home选择的省市
     let city = this.getStorage('bigmallChooseCity')
     if (city) {
@@ -371,6 +369,7 @@ export default {
     // 选择一项后，重新请求
     resetFetch() {
       this.page = 1
+      this.loadingMore = false
       flag = false
       this.fetch()
       this.$nextTick(() => {
@@ -382,6 +381,8 @@ export default {
   // 路由进入
   beforeRouteEnter(to, from, next) {
     next(vm => {
+      // 隐藏微信菜单
+      vm.wxHideMenus()
       flag = false
       if (from.name === 'Detail') {
         let info = vm.getStorage('myChooseCarInfo')

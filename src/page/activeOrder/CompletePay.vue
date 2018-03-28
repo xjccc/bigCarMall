@@ -69,16 +69,17 @@ export default {
     dialogInfo: ''
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
-    this.orderid = this.$route.params.id
-    let index = this.$route.query.index
-    if (index !== undefined) {
-      this.myIndex = index
-      this.myActiveList = this.getStorage('myActiveList')
-    }
-    this.userInfo = this.getStorage('bigCarMallUserInfo')
-    this.fetch()
+    // 解决微信支付跳回白屏
+    setTimeout(() => {
+      this.orderid = this.$route.params.id
+      let index = this.$route.query.index
+      if (index !== undefined) {
+        this.myIndex = index
+        this.myActiveList = this.getStorage('myActiveList')
+      }
+      this.userInfo = this.getStorage('bigCarMallUserInfo')
+      this.fetch()
+    }, 100)
   },
   methods: {
     // 进行订单详情请求
@@ -155,6 +156,11 @@ export default {
         }
       )
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

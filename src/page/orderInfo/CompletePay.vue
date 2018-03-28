@@ -78,16 +78,17 @@ export default {
     dialogType: -1
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
-    this.orderid = this.$route.params.id
-    let index = this.$route.query.index
-    if (index !== undefined) {
-      this.myIndex = index
-      this.myBuyCarList = this.getStorage('myBuyCarList')
-    }
-    this.userInfo = this.getStorage('bigCarMallUserInfo')
-    this.fetch()
+    // 微信中，支付完成跳转白屏
+    setTimeout(() => {
+      this.orderid = this.$route.params.id
+      let index = this.$route.query.index
+      if (index !== undefined) {
+        this.myIndex = index
+        this.myBuyCarList = this.getStorage('myBuyCarList')
+      }
+      this.userInfo = this.getStorage('bigCarMallUserInfo')
+      this.fetch()
+    }, 100)
   },
   methods: {
     // 进行订单详情请求
@@ -221,6 +222,11 @@ export default {
         )
       }
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

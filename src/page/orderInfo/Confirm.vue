@@ -23,6 +23,7 @@
           <span>提车城市</span>
           <span class="city-info" v-if="cityData.provinceName">{{cityData.provinceName}} {{cityData.cityName}}</span>
           <span class="choose-city" v-else>请选择提车城市</span>
+          <em v-if="!cityData.provinceName">*</em>
         </div>
       </div>
       <div class="order-price">
@@ -69,8 +70,6 @@ export default {
     DialogContent
   },
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     this.info = JSON.parse(this.$route.query.info)
     this.info['product_img'] = this.$route.query.img
     this.productid = this.$route.query.id
@@ -238,6 +237,11 @@ export default {
         }
       )
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

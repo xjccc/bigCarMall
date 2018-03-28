@@ -38,6 +38,7 @@ export default {
       axios({
         methods: 'get',
         url: `${url}`,
+        // 是否跨域
         withCredentials: true
       })
         .then(success)
@@ -105,5 +106,11 @@ export default {
     removeStorage(name) {
       localStorage.removeItem(name)
     }
+    // 统计事件
+    // sendAnalytics(c, a, l) {
+    //   try {
+    //     ga('send', 'event', c, a, l)
+    //   } catch (e) {}
+    // }
   }
 }

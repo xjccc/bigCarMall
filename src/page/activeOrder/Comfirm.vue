@@ -38,6 +38,7 @@
       <span class="buy-call" @click="concatDealer" v-if="dealerTel">联系商家</span>
       <span class="pay-money" @click="showPay">支付{{info.pay_money}}元</span>
     </div>
+    <a href="WxH5Pay.aspx" target="_blank" @click.native="openUrl"></a>
   </div>
 </template>
 <script>
@@ -57,8 +58,6 @@ export default {
     DialogContent
   },
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     this.info = JSON.parse(this.$route.query.info)
     this.dealerInfo = JSON.parse(this.$route.query.dealerInfo)
     this.info['product_img'] = this.$route.query.img
@@ -180,7 +179,13 @@ export default {
           flag = false
         }
       )
-    }
+    },
+    openUrl() {}
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

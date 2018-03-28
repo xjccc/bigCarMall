@@ -35,7 +35,7 @@ export default {
   }
   .dealer .filters{
     position: relative;
-    flex: 1;
+    width: 300px;
     display: flex;
     align-items: center;
     padding: 24px;
@@ -69,7 +69,7 @@ export default {
     transform: scale(.5);
   }
   .only-active{
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;

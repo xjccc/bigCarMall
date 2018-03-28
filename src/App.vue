@@ -6,7 +6,34 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  created() {
+    let wx = window.wx
+    this.getData(
+      `https://saasm.360che.com.cn/newsaasapi/WeiXin/WXJSsignature.aspx?${+new Date()}`,
+      res => {
+        if (res.data.status === 1) {
+          let data = res.data
+          // 注册微信信息
+          wx.config({
+            debug: false,
+            appId: data.data.appId,
+            timestamp: data.data.timestamp,
+            nonceStr: data.data.noncestr,
+            signature: data.data.signature,
+            jsApiList: [
+              'onMenuShareTimeline',
+              'onMenuShareAppMessage',
+              'hideMenuItems',
+              'showMenuItems',
+              'showAllNonBaseMenuItem',
+              'hideAllNonBaseMenuItem'
+            ]
+          })
+        }
+      }
+    )
+  }
 }
 </script>
 

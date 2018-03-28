@@ -67,9 +67,6 @@ export default {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .activeSelect{
-    color: #09BB07;
-  }
   .list-item{
     margin-left: 32px;
     height: 86px;
@@ -83,5 +80,9 @@ export default {
     height: 88px;
     line-height: 88px;
     border-bottom: none;
+  }
+
+  .activeSelect{
+    color: #09BB07;
   }
 </style>

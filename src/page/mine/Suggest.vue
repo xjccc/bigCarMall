@@ -4,13 +4,13 @@
     <div class="content">
       <div class="text-area">
         <div class="text-title">
-          <span class="title">意向品牌</span>
+          <span class="title">意见描述</span>
           <span class="num">{{num}}/300</span>
         </div>
         <textarea @input="inputTextArea" rows="8" v-model="textInput" placeholder="留下您宝贵的意见吧" maxlength="300"></textarea>
       </div>
       <div class="item">
-        <span>尊姓大名</span>
+        <span>姓名</span>
         <input type="text" maxlength="11" v-model="name" placeholder="请填写您的姓名" />
       </div>
       <div class="item">
@@ -46,10 +46,6 @@ export default {
     // 显示错误提示
     dialogShowToast: false
   }),
-  created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
-  },
   methods: {
     inputTextArea() {
       this.num = this.textInput.length
@@ -103,6 +99,11 @@ export default {
         }
       )
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>
@@ -166,6 +167,7 @@ export default {
     border-bottom: 0;
   }
   .item span{
+    width: 130px;
     font-size: 32px;
     line-height: 32px;
     color: #5C6066;

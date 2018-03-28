@@ -69,6 +69,8 @@ export default {
     allProvinceList: [],
     // 地区侧边栏字母
     provinceListLetter: [],
+    // 全部品牌&车系
+    allCarSeriesList: [],
     // 显示地区弹层
     locationShow: false,
     // 选择地区
@@ -133,12 +135,14 @@ export default {
     let allbrandlistletters = this.getStorage('allbrandlistletters')
     let provincecitylist = this.getStorage('provincecitylist')
     let provincecityletters = this.getStorage('provincecityletters')
+    let allCarSeriesList = this.getStorage('allCarSeriesList')
     if (
       allsubcategorylist &&
       allbrandlist &&
       allbrandlistletters &&
       provincecitylist &&
-      provincecityletters
+      provincecityletters &&
+      allCarSeriesList
     ) {
       this.allProvinceList = provincecitylist
       this.provinceListLetter = provincecityletters
@@ -156,8 +160,6 @@ export default {
     this.getDealerList()
     // 获取文章列表
     this.getArticalList()
-    // 分享
-    this.shareHomePage()
   },
   mounted() {
     // 获取用户userid
@@ -172,54 +174,27 @@ export default {
     // 进行微信分享
     shareHomePage() {
       let wx = window.wx
-      this.getData(
-        `https://saasm.360che.com.cn/newsaasapi/WeiXin/WXJSsignature.aspx?${+new Date()}`,
-        res => {
-          if (res.data.status === 1) {
-            let data = res.data
-            // 注册微信信息
-            wx.config({
-              debug: false,
-              appId: data.data.appId,
-              timestamp: data.data.timestamp,
-              nonceStr: data.data.noncestr,
-              signature: data.data.signature,
-              jsApiList: [
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage',
-                'hideMenuItems',
-                'showMenuItems',
-                'showAllNonBaseMenuItem',
-                'hideAllNonBaseMenuItem'
-              ]
-            })
-            wx.ready(() => {
-              wx.hideAllNonBaseMenuItem()
-              wx.onMenuShareTimeline({
-                title: '卡车之家大车市', // 分享标题
-                link: location.href, // 分享链接
-                imgUrl: this.swiperData[0].imgurl,
-                success: () => {}
-              })
-              wx.onMenuShareAppMessage({
-                title: '卡车之家大车市', // 分享标题
-                desc: '车辆相关报价，由【卡车之家大车市】提供。', // 分享描述
-                link: location.href, // 分享链接
-                imgUrl: this.swiperData[0].imgurl,
-                type: '',
-                dataUrl: '',
-                success: () => {}
-              })
-              wx.showMenuItems({
-                menuList: [
-                  'menuItem:share:appMessage',
-                  'menuItem:share:timeline'
-                ]
-              })
-            })
-          }
-        }
-      )
+      wx.ready(() => {
+        wx.hideAllNonBaseMenuItem()
+        wx.onMenuShareTimeline({
+          title: '卡车之家大车市', // 分享标题
+          link: location.href, // 分享链接
+          imgUrl: this.swiperData[0].imgurl,
+          success: () => {}
+        })
+        wx.onMenuShareAppMessage({
+          title: '卡车之家大车市', // 分享标题
+          desc: '车辆相关报价，由【卡车之家大车市】提供。', // 分享描述
+          link: location.href, // 分享链接
+          imgUrl: this.swiperData[0].imgurl,
+          type: '',
+          dataUrl: '',
+          success: () => {}
+        })
+        wx.showMenuItems({
+          menuList: ['menuItem:share:appMessage', 'menuItem:share:timeline']
+        })
+      })
     },
     // 先获取用户登录
     getUserUid() {
@@ -265,6 +240,8 @@ export default {
           // 缓存城市侧边栏字母
           this.provinceListLetter = data.data.provincecityletters
           this.setStorage('provincecityletters', data.data.provincecityletters)
+          // 缓存全部车型车系
+          this.setStorage('allCarSeriesList', data.data.brandserieslist)
         }
       })
     },
@@ -274,6 +251,8 @@ export default {
         if (res.data.status === 1) {
           this.swiperData = res.data.listSlide
           this.navData = res.data.data.menu
+          // 分享
+          this.shareHomePage()
         }
       })
     },
@@ -549,7 +528,7 @@ export default {
   .to-top:after{
     position: absolute;
     top: 22px;
-    left: 28px;
+    left: 31px;
     font-family: 'carMall';
     font-size: 38px;
     content: "\e70e";

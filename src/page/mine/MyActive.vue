@@ -53,8 +53,6 @@ export default {
     noMore: false
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     // this.userid = this.$route.query.id
     // this.fetch()
   },
@@ -120,6 +118,8 @@ export default {
   // 路由进入
   beforeRouteEnter(to, from, next) {
     next(vm => {
+      // 隐藏微信菜单
+      vm.wxHideMenus()
       vm.userid = vm.$route.query.id
       flag = false
       if (from.name === 'ActiveCompletePay') {

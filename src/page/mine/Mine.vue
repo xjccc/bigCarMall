@@ -38,10 +38,10 @@
     </div>
     <div class="mine-footer">
       <div class="concat">
-        合作热线：<span @click="telUs">400-819-6168</span> (9:00-18:00)
+        合作热线：<span @click="telUs">400-613-6188</span> (9:00-18:00)
       </div>
       <div class="truck-home">
-        卡车之家@2017http://m.360che.com
+        卡车之家@{{new Date().getFullYear()}}http://m.360che.com
       </div>
     </div>
     <!-- 用户协议 -->
@@ -64,8 +64,6 @@ export default {
     showService: false
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     let userInfo = this.getStorage('bigCarMallUserInfo')
     if (userInfo) {
       this.userInfo = userInfo
@@ -110,8 +108,13 @@ export default {
     },
     // 合作热线
     telUs() {
-      window.location.href = `tel://${4008196168}`
+      window.location.href = `tel://${4006136188}`
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

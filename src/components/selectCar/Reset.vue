@@ -52,6 +52,10 @@ export default {
     background: #fff;
   }
   .item-name{
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 24px;
     color: #17181A;
     line-height: 40px;
@@ -60,7 +64,7 @@ export default {
     font-family: 'carMall';
     font-size: 24px;
     color: #FF6600;
-    margin-left: 24px;
+    margin-left: 10px;
   }
   .reset-name{
     width: 80px;

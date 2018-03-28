@@ -104,8 +104,6 @@ export default {
     dialogShowToast: false
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     // 获取省市
     let provincecitylist = this.getStorage('provincecitylist')
     let provincecityletters = this.getStorage('provincecityletters')
@@ -267,6 +265,11 @@ export default {
         }
       )
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.wxHideMenus()
+    })
   }
 }
 </script>

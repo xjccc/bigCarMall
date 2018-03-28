@@ -1,20 +1,27 @@
 <template>
-  <div :class="['price', showPrice ? 'visible' : '']">
+  <div :class="['series', showSeries ? 'visible' : '']">
     <div class="header">
-      <span class="back" @click="pop">&#xe711;</span> 选择类别
+      <span class="back" @click="pop">&#xe711;</span> 选择车系
     </div>
     <div class="content">
-      <div class="price-list">
-        <div class="list-item" v-for="item in data" :class="item.priceVal === val ? 'activeSelect' : ''" @click="choosePrice(item)">
-          {{item.showStr}}
+      <template v-for="item in data">
+        <div class="series-list" v-if="brandid === item.brandid">
+          <div class="list-item" :class="i.seriesextendidlist === id ? 'activeSelect' : ''" v-for="i in item.serieslist" @click="chooseSeries(i)">
+            {{i.seriesname}}
+          </div>
         </div>
-      </div>
+      </template>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['showPrice', 'data', 'val'],
+  props: ['showSeries', 'data', 'id', 'brandid'],
+  computed: {
+    list() {
+      return this.data[this.brandid]
+    }
+  },
   data: () => ({}),
   methods: {
     // 关闭弹层
@@ -22,14 +29,14 @@ export default {
       this.$emit('pop')
     },
     // 选择子类
-    choosePrice(item) {
-      this.$emit('choose-price', item)
+    chooseSeries(item) {
+      this.$emit('choose-series', item)
     }
   }
 }
 </script>
 <style scoped>
-  .price{
+  .series{
     position: fixed;
     left: 0;
     top: 0;
@@ -75,6 +82,7 @@ export default {
     font-size: 28px;
     color: #17181A;
   }
+
   .list-item:last-child{
     height: 88px;
     line-height: 88px;

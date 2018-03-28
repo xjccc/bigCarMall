@@ -1,7 +1,7 @@
 <template>
   <div class="item-active" @click="jumpToDetail(data.ProductId)">
     <div class="item-header">
-      <span class="left">剩余<em>{{data.Inventory}}</em>份</span>
+      <span class="left">剩余<em :class="data.Inventory ? 'active' : 'zero'">{{data.Inventory}}</em>份</span>
       <!-- 超过1小时显示 -->
       <div class="cut-time" v-if="!minutes">倒计时<span>{{showDay}}</span>天<span>{{showHours}}</span>小时</div>
       <!-- 不足1小时显示 -->
@@ -99,8 +99,11 @@ export default {
     color: #A1A9B2;
     line-height: 36px;
   }
-  .left em{
+  .left .active{
     color: #0B0C00;
+  }
+  .left .zero{
+    color: #FF6600;
   }
   .cut-time{
     font-size: 24px;

@@ -111,8 +111,6 @@ export default {
     }
   }),
   created() {
-    // 隐藏wx分享菜单
-    this.wxHideMenus()
     // 获取home选择的省市
     let city = this.getStorage('bigmallChooseCity')
     if (city) {
@@ -310,6 +308,8 @@ export default {
   // 路由进入
   beforeRouteEnter(to, from, next) {
     next(vm => {
+      // 隐藏wx菜单
+      vm.wxHideMenus()
       flag = false
       let info = vm.getStorage('DealerInfo')
       vm.fromDetail = info !== null ? info.fromDetail : false
