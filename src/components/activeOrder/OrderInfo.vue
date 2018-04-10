@@ -22,7 +22,7 @@
       <div class="item">
         <span>支付方式</span>
         <div class="pay-type">
-          <span class="icon" :class="info.paytype_name === '微信' ? 'wx-icon' : 'zfb-icon'"></span>
+          <span class="icon" :class="info.paytype_name !== '支付宝' ? 'wx-icon' : 'zfb-icon'"></span>
           <span class="type">{{info.paytype_name}}</span>
         </div>
       </div>

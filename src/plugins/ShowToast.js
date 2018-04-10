@@ -1,7 +1,7 @@
 import Toast from './Toast'
 let Tst = {}
 Tst.install = function(Vue, options) {
-  if (document.getElementsByClassName('weui-toast').length) {
+  if (document.getElementsByClassName('toast').length) {
     return
   }
   const VueToast = Vue.extend(Toast)

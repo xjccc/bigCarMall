@@ -12,25 +12,27 @@ export default {
     this.getData(
       `https://saasm.360che.com.cn/newsaasapi/WeiXin/WXJSsignature.aspx?${+new Date()}`,
       res => {
-        if (res.data.status === 1) {
-          let data = res.data
-          // 注册微信信息
-          wx.config({
-            debug: false,
-            appId: data.data.appId,
-            timestamp: data.data.timestamp,
-            nonceStr: data.data.noncestr,
-            signature: data.data.signature,
-            jsApiList: [
-              'onMenuShareTimeline',
-              'onMenuShareAppMessage',
-              'hideMenuItems',
-              'showMenuItems',
-              'showAllNonBaseMenuItem',
-              'hideAllNonBaseMenuItem'
-            ]
-          })
-        }
+        try {
+          if (res.data.status === 1) {
+            let data = res.data
+            // 注册微信信息
+            wx.config({
+              debug: false,
+              appId: data.data.appId,
+              timestamp: data.data.timestamp,
+              nonceStr: data.data.noncestr,
+              signature: data.data.signature,
+              jsApiList: [
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'hideMenuItems',
+                'showMenuItems',
+                'showAllNonBaseMenuItem',
+                'hideAllNonBaseMenuItem'
+              ]
+            })
+          }
+        } catch (e) {}
       }
     )
   }
@@ -138,5 +140,11 @@ export default {
   width: 400px;
   height: 300px;
   margin-bottom: 8px;
+}
+/* 服务协议title */
+.service-title{
+  font-size: 32px;
+  color: #17181A;
+  font-weight: bold;
 }
 </style>

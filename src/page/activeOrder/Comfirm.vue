@@ -38,7 +38,6 @@
       <span class="buy-call" @click="concatDealer" v-if="dealerTel">联系商家</span>
       <span class="pay-money" @click="showPay">支付{{info.pay_money}}元</span>
     </div>
-    <a href="WxH5Pay.aspx" target="_blank" @click.native="openUrl"></a>
   </div>
 </template>
 <script>
@@ -70,6 +69,15 @@ export default {
       this.telNumber = info.mobile
     }
   },
+  mounted() {
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler('onPayCallback', (data, responseCallback) => {
+        if (data === 'success') {
+          this.$router.replace(`/home/active/complete/${this.code}`)
+        }
+      })
+    })
+  },
   data: () => ({
     // 用户的userInfo
     userInfo: {},
@@ -98,7 +106,9 @@ export default {
     // 错误提示
     dialogInfo: '',
     // 显示错误提示
-    dialogShowToast: false
+    dialogShowToast: false,
+    // code  app
+    code: ''
   }),
   methods: {
     // 联系商家
@@ -168,7 +178,16 @@ export default {
         }&provincesn=0&citysn=0&paytype=${type}&remark=${this.textInput}`,
         res => {
           if (res.data.isok === '1') {
-            window.location.href = res.data.pay_url
+            // app微信支付
+            if (type === 4) {
+              window.WebViewJavascriptBridge.callHandler('onPay', {
+                prepay_id: res.data.app_parm.prepay_id,
+                nonce_str: res.data.app_parm.nonce_str
+              })
+              this.code = res.data.order_code
+            } else {
+              window.location.href = res.data.pay_url
+            }
           } else {
             this.$showToast.show({
               type: 'error',
@@ -179,8 +198,7 @@ export default {
           flag = false
         }
       )
-    },
-    openUrl() {}
+    }
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {

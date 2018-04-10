@@ -104,6 +104,9 @@ export default {
     // 显示意见反馈
     showSuggest: false
   }),
+  beforeCreate() {
+    TruckLogin.init()
+  },
   created() {
     document.title = '卡车之家大车市 - 低价优惠选好卡车'
     document.querySelector('meta[name=keywords]').content =
@@ -203,22 +206,20 @@ export default {
         'https://dealer-api.360che.com/bigchemall/User/GetUserInfo.aspx',
         res => {
           if (res.data.status === 0) {
-            if (res.data.data.uid) {
-              this.userid = res.data.data.uid
-              this.setStorage('bigCarMallUid', res.data.data.uid)
-            }
+            this.userid = res.data.data.uid
             this.setStorage('bigCarMallUserInfo', res.data.data)
           } else {
-            let uid = this.getStorage('bigCarMallUid')
             let info = this.getStorage('bigCarMallUserInfo')
-            if (uid) {
-              this.removeStorage('bigCarMallUid')
-            }
             if (info) {
               this.removeStorage('bigCarMallUserInfo')
             }
           }
           // 请求完用户信息，进行取消弹层
+          this.isLoading = false
+        },
+        e => {
+          console.log(e, 'catch')
+          // 失败后，进行取消弹层
           this.isLoading = false
         }
       )
@@ -366,7 +367,7 @@ export default {
       // 不是后端给的跳转链接，路由跳转
       if (!url) {
         if (insidetype === 'mine') {
-          if (this.userid === null) {
+          if (this.userid === null || this.userid === '0' || !this.userid) {
             TruckLogin.ToLogin()
             return
           }

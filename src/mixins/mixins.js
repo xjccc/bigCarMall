@@ -13,6 +13,24 @@ export default {
         return 'm'
       }
     },
+    sendData2Native(data, callback) {               //和app通信
+        window.WebViewJavascriptBridge.send(data, callback)
+    },
+    callNativeMethod(method, param, callback) {        //和app通信
+        window.WebViewJavascriptBridge.callHandler(method, param,callback)
+    },
+    // 监听app回调
+    connectWebViewJavascriptBridge(callback) {
+      if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge)
+      } else {
+        document.addEventListener(
+          'WebViewJavascriptBridgeReady',
+          function() {
+            callback(WebViewJavascriptBridge)
+          },false)
+      }
+    },
     ajaxUrl() {
       // return '/xj'
       return 'https://dealer-api.360che.com'
@@ -38,7 +56,7 @@ export default {
       axios({
         methods: 'get',
         url: `${url}`,
-        // 是否跨域
+        // 请求带上cookie
         withCredentials: true
       })
         .then(success)

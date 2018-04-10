@@ -42,13 +42,6 @@ export default {
     // 选择支付类型  1、支付宝  2、微信
     type: 2
   }),
-  // created() {
-  //   if (this.getType() === 'm') {
-  //     this.type = 1
-  //   } else {
-  //     this.type = 2
-  //   }
-  // },
   methods: {
     close() {
       this.$emit('close')
@@ -56,8 +49,13 @@ export default {
     pay() {
       // 如果是m端的微信需要传type为3
       let type = this.type
-      if (this.getType() === 'm' && type === 2) {
-        type = 3
+      let mode = this.getType()
+      if (type === 2) {
+        if (mode === 'm') {
+          type = 3
+        } else if (mode === 'app') {
+          type = 4
+        }
       }
       this.$emit('pay', type)
     },

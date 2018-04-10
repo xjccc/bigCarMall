@@ -1,28 +1,18 @@
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-var Trucklogin = {
+import axios from 'axios'
+import jsonpAdapter from 'axios-jsonp'
+axios.defaults.withCredentials = true
+export default {
+  uid: '0',
   checkplatform: function checkplatform() {
     var UA = navigator.userAgent
     var uaCase = navigator.userAgent.toLowerCase()
-    if (uaCase.match(/MicroMessenger/i) == 'micromessenger') {
-      if (!window.define) {
-        var tjs = document.createElement('script')
-        tjs.src = 'https://s.kcimg.cn/public/m/js/t.min.js'
-        document.body.appendChild(tjs)
-      }
-      if (!window.truckhomeAccountBinding) {
-        var tjs = document.createElement('script')
-        tjs.src =
-          'https://s.kcimg.cn/public/wechat/wechat.accout.binding.2.0.3.min.js'
-        document.body.appendChild(tjs)
-      }
+    if (uaCase.indexOf('micromessenger') >= 0) {
       return 'weixin'
-    }
-    if (UA.match(/360che/gi)) {
+    } else if (uaCase.indexOf('360che') >= 0) {
       return 'app'
+    } else {
+      return 'm'
     }
-    return 'm'
   },
   ToLogin: function ToLogin() {
     var platform = this.checkplatform()
@@ -41,8 +31,33 @@ var Trucklogin = {
     }
   },
   init: function init() {
-    this.checkplatform()
-
+    let platform = this.checkplatform()
+    switch (platform) {
+      case 'weixin':
+        if (!window.define) {
+          var tjs = document.createElement('script')
+          tjs.src = 'https://s.kcimg.cn/public/m/js/t.min.js'
+          document.body.appendChild(tjs)
+        }
+        if (!window.truckhomeAccountBinding) {
+          var binding = document.createElement('script')
+          binding.src =
+            'https://s.kcimg.cn/public/wechat/wechat.accout.binding.2.0.3.min.js'
+          binding.charset = 'utf-8'
+          document.body.appendChild(binding)
+        }
+        this.checkLogin()
+        break
+      case 'm':
+        this.checkLogin()
+        break
+      case 'app':
+        this.appReload() // app登陆以后刷新
+        this.appGetUid()
+        break
+    }
+  },
+  appReload() {
     function connectWebViewJavascriptBridge(callback) {
       if (window.WebViewJavascriptBridge) {
         callback(WebViewJavascriptBridge)
@@ -62,10 +77,39 @@ var Trucklogin = {
         data,
         responseCallback
       ) {
-        location.href = location.href
+        window.location.reload()
       })
+    })
+  },
+  checkLogin() {
+    // 微信和m获取uid
+    var userid = document.cookie.match(/AbcfN_ajaxuid=([^;$]+)/)
+    if (userid && userid[1]) {
+      this.uid = userid[1]
+    } else {
+      this.uid = 0
+    }
+  },
+  appGetUid() {
+    // app获取uid
+    var UA = navigator.userAgent
+    var userid = UA.match(/USERID[^\s]+/)[0].substr(7)
+    if (userid != '0') {
+      this.uid = userid
+    } else {
+      this.getUid()
+    }
+  },
+  getUid() {
+    axios({
+      url: `https://bbs-api.360che.com/interface/app/index.php?action=LoginCheck&type=user`,
+      adapter: jsonpAdapter
+    }).then(res => {
+      if (!res.data.status) {
+        this.uid = res.data.data
+      }
     })
   }
 }
-Trucklogin.init()
-exports.default = Trucklogin
+// Trucklogin.init()
+// exports.default = Trucklogin

@@ -83,6 +83,15 @@ export default {
     // 获取提车城市
     this.getCarCity()
   },
+  mounted() {
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler('onPayCallback', (data, responseCallback) => {
+        if (data === 'success') {
+          this.$router.replace(`/home/orderInfo/complete/${this.code}`)
+        }
+      })
+    })
+  },
   data: () => ({
     // 用户的userInfo
     userInfo: '',
@@ -121,7 +130,9 @@ export default {
     // 错误提示
     dialogInfo: '',
     // 显示错误提示
-    dialogShowToast: false
+    dialogShowToast: false,
+    // app 端需要的code
+    code: ''
   }),
   methods: {
     // 获取提车城市
@@ -225,7 +236,15 @@ export default {
         }&citysn=${this.submit.citysn}&paytype=${type}`,
         res => {
           if (res.data.isok === '1') {
-            window.location.href = res.data.pay_url
+            if (type === 4) {
+              window.WebViewJavascriptBridge.callHandler('onPay', {
+                prepay_id: res.data.app_parm.prepay_id,
+                nonce_str: res.data.app_parm.nonce_str
+              })
+              this.code = res.data.order_code
+            } else {
+              window.location.href = res.data.pay_url
+            }
           } else {
             this.$showToast.show({
               type: 'error',

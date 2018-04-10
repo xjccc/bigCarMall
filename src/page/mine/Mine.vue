@@ -73,7 +73,6 @@ export default {
     // 注销操作
     // loginOut() {
     //   this.removeStorage('bigCarMallUserInfo')
-    //   this.removeStorage('bigCarMallUid')
     //   this.$router.replace('/')
     // },
     // 我买的车

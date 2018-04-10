@@ -116,6 +116,9 @@ export default {
     // m端分享提示
     mShow: false
   }),
+  beforeCreate() {
+    TruckLogin.init()
+  },
   created() {
     this.id = this.$route.params.id
     this.fetch()
@@ -161,17 +164,10 @@ export default {
         `https://dealer-api.360che.com/bigchemall/User/GetUserInfo.aspx`,
         res => {
           if (res.data.status === 0) {
-            if (res.data.data.uid) {
-              this.userid = res.data.data.uid
-              this.setStorage('bigCarMallUid', res.data.data.uid)
-            }
+            this.userid = res.data.data.uid
             this.setStorage('bigCarMallUserInfo', res.data.data)
           } else {
-            let uid = this.getStorage('bigCarMallUid')
             let info = this.getStorage('bigCarMallUserInfo')
-            if (uid) {
-              this.removeStorage('bigCarMallUid')
-            }
             if (info) {
               this.removeStorage('bigCarMallUserInfo')
             }
@@ -244,7 +240,7 @@ export default {
     // 支付
     payFor() {
       // 先判断是否登陆过，没有登陆过，需要进行登陆
-      if (this.userid === null) {
+      if (this.userid === null || this.userid === '0' || !this.userid) {
         // 跳转登陆存储id值
         this.setStorage('activeLogin', `_${this.id}`)
         TruckLogin.ToLogin()
