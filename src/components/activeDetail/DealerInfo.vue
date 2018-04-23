@@ -27,8 +27,8 @@ export default {
 </script>
 <style scoped>
   .dealer-info{
-    padding: 16px 32px;
-    margin-top: 16px;
+    padding: 8px 16px;
+    margin-top: 8px;
     background: #fff;
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@ export default {
   .dealer-shop:after{
     font-family: 'carMall';
     content: "\e70d";
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
   }
   .content{
@@ -53,29 +53,29 @@ export default {
     align-items: center;
   }
   .level{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .dealer-name{
     flex: 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
-    line-height: 48px;
+    line-height: 24px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
   .address{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #5C6066;
-    line-height: 36px;
+    line-height: 18px;
   }
 </style>

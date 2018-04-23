@@ -46,6 +46,18 @@ export default {
     // 显示错误提示
     dialogShowToast: false
   }),
+  created() {
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '意见反馈'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
+  },
   methods: {
     inputTextArea() {
       this.num = this.textInput.length
@@ -118,7 +130,7 @@ export default {
     flex: 1;
   }
   .text-area{
-    padding: 0 32px;
+    padding: 0 16px;
     background: #fff;
   }
   .text-title{
@@ -126,69 +138,69 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 88px;
+    height: 44px;
   }
   .text-title .title{
-    font-size: 32px;
+    font-size: 16px;
     color: #5C6066;
   }
   .text-title .num{
-    font-size: 24px;
+    font-size: 12px;
     color: #5B6067;
   }
   .text-area textarea{
     width: 100%;
-    padding: 16px;
+    padding: 8px;
     background: #F3F4F5;
-    border: 2px solid #EDEDED;
-    border-radius: 4px;
-    font-size: 28px;
-    line-height: 32px;
+    border: 1px solid #EDEDED;
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 16px;
     resize: none;
   }
   .text-area textarea::-webkit-input-placeholder{
-    font-size: 28px;
-    line-height: 32px;
+    font-size: 14px;
+    line-height: 16px;
     color: #A1A9B2;
   }
   .item{
-    padding-left: 32px;
+    padding-left: 16px;
     background: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 86px;
-    line-height: 86px;
-    border-bottom: 2px solid #EDEDED;
+    height: 43px;
+    line-height: 43px;
+    border-bottom: 1px solid #EDEDED;
   }
   .item:last-child{
-    height: 88px;
-    line-height: 88px;
+    height: 44px;
+    line-height: 44px;
     border-bottom: 0;
   }
   .item span{
-    width: 130px;
-    font-size: 32px;
-    line-height: 32px;
+    width: 65px;
+    font-size: 16px;
+    line-height: 16px;
     color: #5C6066;
   }
   .item input{
-    margin-left: 24px;
-    font-size: 32px;
-    line-height: 32px;
+    margin-left: 12px;
+    font-size: 16px;
+    line-height: 16px;
     flex: 1;
     color: #17181A;
   }
   .item input::-webkit-input-placeholder{
-    line-height: 32px;
+    line-height: 16px;
     color: #D1D1D1;
   }
   .confirm{
-    height: 96px;
-    line-height: 96px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
     background: #508DFD;
-    font-size: 36px;
+    font-size: 18px;
     color: #fff;
   }
 </style>

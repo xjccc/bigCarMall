@@ -1,7 +1,7 @@
 <template>
   <!-- 支付完成 -->
   <div class="complete-pay">
-    <top-header :title="'活动详情'" :type="'home'"></top-header>
+    <top-header :title="'活动订单'" :type="'home'"></top-header>
     <div class="compelete-content">
       <pay-info :info="info"></pay-info>
       <dealer-info :info="info"></dealer-info>
@@ -69,7 +69,7 @@ export default {
     dialogInfo: ''
   }),
   created() {
-    // 解决微信支付跳回白屏
+    // 微信中，支付完成跳转白屏
     setTimeout(() => {
       this.orderid = this.$route.params.id
       let index = this.$route.query.index
@@ -79,7 +79,17 @@ export default {
       }
       this.userInfo = this.getStorage('bigCarMallUserInfo')
       this.fetch()
-    }, 100)
+      // app传title
+      this.callNativeMethod('onChangeWebTitle', {
+        changeWebTitle: '活动订单'
+      })
+      // 没有地区筛选
+      this.callNativeMethod('onShowLocationInfo', { location: '' })
+      // 不显示分享按钮
+      this.callNativeMethod('onShowShareButton', {
+        isShow: false
+      })
+    }, 800)
   },
   methods: {
     // 进行订单详情请求
@@ -92,6 +102,8 @@ export default {
           if (res.data.isok === '1') {
             this.info = res.data.data
             this.isLoading = false
+          } else {
+            this.$router.go(-2)
           }
         }
       )
@@ -175,6 +187,6 @@ export default {
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
+    padding-bottom: 8px;
   }
 </style>

@@ -82,12 +82,23 @@ export default {
     }
     // 获取提车城市
     this.getCarCity()
+
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '预约订单'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   mounted() {
     this.connectWebViewJavascriptBridge(bridge => {
       bridge.registerHandler('onPayCallback', (data, responseCallback) => {
         if (data === 'success') {
-          this.$router.replace(`/home/orderInfo/complete/${this.code}`)
+          this.$router.replace(`/dacheshi/orderInfo/complete/${this.code}`)
         }
       })
     })
@@ -276,52 +287,52 @@ export default {
     flex: 1;
   }
   .item-info{
-    margin-top: 16px;
-    padding: 0 32px;
+    margin-top: 8px;
+    padding: 0 16px;
     background: #fff;
   }
   .item-info > .item-person{
-    height: 78px;
-    line-height: 78px;
-    font-size: 28px;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
     color: #17181A;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-info > .item{
-    height: 88px;
+    height: 44px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-info > .item:last-child{
-    height: 90px;
+    height: 45px;
     border-bottom: 0;
   }
   .item-info > .item span{
-    width: 128px;
-    font-size: 32px;
+    width: 64px;
+    font-size: 16px;
     color: #5C6066;
   }
   .item-info > .item input{
-    margin-left: 24px;
+    margin-left: 12px;
     flex : 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
   }
   .item-info > .item input::-webkit-input-placeholder{
-    font-size: 32px;
+    font-size: 16px;
     color: #D1D1D1;
   }
   .item-info > .item em{
-    font-size: 32px;
+    font-size: 16px;
     color: #F44336;
   }
   .item-info > .item span.city-info{
     position: relative;
-    margin-left: 24px;
+    margin-left: 12px;
     flex : 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
   }
   .item-info > .item span.city-info:after{
@@ -329,23 +340,23 @@ export default {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 14px;
+    line-height: 14px;
     font-family: 'carMall';
     content: "\e70d";
     color: #CFD3D8;
   }
   .item-info > .item span.choose-city{
-    padding-left: 24px;
+    padding-left: 12px;
     flex: 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #D1D1D1;
   }
   .order-price{
-    margin-top: 16px;
-    padding-left: 32px;
-    height: 90px;
-    line-height: 90px;
+    margin-top: 8px;
+    padding-left: 16px;
+    height: 45px;
+    line-height: 45px;
     background: #fff;
   }
   .order-price > .item{
@@ -353,37 +364,37 @@ export default {
     flex-direction: row;
   }
   .order-price > .item span.price-pay{
-    margin-left: 24px;
-    font-size: 32px;
+    margin-left: 12px;
+    font-size: 16px;
     color: #FF6600;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .order-price > .item em.pre-price{
-    margin-left: 8px;
-    font-size: 24px;
+    margin-left: 4px;
+    font-size: 12px;
     color: #A1A9B2;
   }
   .tips{
-    padding: 0 32px;
-    height: 72px;
-    line-height: 72px;
+    padding: 0 16px;
+    height: 36px;
+    line-height: 36px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   .is-tips{
-    font-size: 24px;
+    font-size: 12px;
     color: #F44336;
   }
   .user-service{
-    font-size: 24px;
+    font-size: 12px;
     color: #508DFD;
     text-decoration: underline;
   }
   .confirm-footer{
-    height: 100px;
+    height: 50px;
     background: #fff;
     box-shadow: 0 0 0 0 #DDDDDD;
     display: flex;
@@ -392,12 +403,12 @@ export default {
   }
   .buy-call{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
     text-align: center;
   }
   .buy-call:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e706";
     color: #5C6066;
@@ -405,9 +416,9 @@ export default {
   .pay-money{
     flex: 2;
     background: #FF6600;
-    line-height: 100px;
+    line-height: 50px;
     text-align: center;
-    font-size: 36px;
+    font-size: 18px;
     font-weight: bold;
     color: #fff;
   }

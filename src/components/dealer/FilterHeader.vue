@@ -29,34 +29,34 @@ export default {
   .dealer{
     display: flex;
     flex-direction: row;
-    height: 88px;
+    height: 44px;
     background: #fff;
-    box-shadow: 0 -2px 0 0 #F5F5F5;
+    box-shadow: 0 -1px 0 0 #F5F5F5;
   }
   .dealer .filters{
     position: relative;
-    width: 300px;
+    width: 150px;
     display: flex;
     align-items: center;
-    padding: 24px;
+    padding: 12px;
     white-space: nowrap;
   }
   .dealer .filters:after{
     content: "";
     position: absolute;
-    top: 24px;
+    top: 12px;
     right: 0;
-    width: 2px;
-    height: 40px;
+    width: 1px;
+    height: 20px;
     background: #EDEDED;
   }
   .dealer .filters span{
     position: relative;
     display: flex;
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
-    line-height: 40px;
+    line-height: 20px;
   }
   .dealer .filters span:after{
     font-family: 'carMall';
@@ -64,7 +64,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
     transform: scale(.5);
   }
@@ -79,16 +79,16 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 32px;
+    height: 16px;
   }
   .check-icon{
     position: relative;
-    margin-right: 8px;
-    width: 32px;
-    height: 32px;
-    border: 2px solid rgba(161,169,179,0.30);
+    margin-right: 4px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(161,169,179,0.30);
     box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.20);
-    border-radius: 4px;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .checked::before{
@@ -97,14 +97,14 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 12px;
+    line-height: 14px;
     color: #5C6066;
   }
   .icon-name{
-    margin-right: 24px;
-    font-size: 28px;
-    line-height: 28px;
+    margin-right: 12px;
+    font-size: 14px;
+    line-height: 14px;
     color: #A1A9B3;
   }
 </style>

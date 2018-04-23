@@ -16,7 +16,7 @@ export default {
   data: () => ({}),
   methods: {
     jumpToDetail(id) {
-      this.$router.push({ path: `/home/active/detail/${id}` })
+      this.$router.push({ path: `/dacheshi/active/detail/${id}` })
     }
   }
 }
@@ -25,12 +25,12 @@ export default {
   .item-discount{
     display: flex;
     flex-direction: row;
-    padding: 32px;
-    border-bottom: 2px solid #ededed;
+    padding: 16px;
+    border-bottom: 1px solid #ededed;
   }
   .item-discount figure{
-    width: 224px;
-    height: 150px;
+    width: 112px;
+    height: 75px;
   }
   .item-discount figure img{
     width: 100%;
@@ -40,37 +40,39 @@ export default {
   }
   .descripe{
     flex: 1;
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .detail{
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
-    line-height: 48px;
+    line-height: 24px;
     text-overflow:ellipsis;
     word-break: break-all;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .price{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 14px;
-    line-height: 40px;
+    margin-top: 7px;
+    line-height: 20px;
   }
   .price span{
-    font-size: 24px;
+    font-size: 12px;
     color: #FF6600;
   }
   .price em{
-    margin: 0 8px;
-    font-size: 28px;
-    line-height: 40px;
+    margin: 0 4px;
+    font-size: 14px;
+    line-height: 20px;
     font-weight: bold;
   }
 </style>

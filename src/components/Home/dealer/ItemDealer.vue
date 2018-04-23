@@ -43,15 +43,15 @@ export default {
 </script>
 <style scoped>
   .item-dealer{
-    padding: 32px;
+    padding: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-dealer figure{
-    width: 224px;
-    height: 150px;
+    width: 112px;
+    height: 75px;
   }
   .item-dealer figure img{
     width: 100%;
@@ -60,61 +60,61 @@ export default {
     vertical-align: middle;
   }
   .item-content{
-    margin-left: 16px;
+    margin-left: 8px;
     flex: 1;
-    height: 150px;
+    height: 75px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
   }
   .title{
-    height: 48px;
+    height: 24px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .name{
     flex: 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
-    line-height: 48px;
+    line-height: 24px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .promotions{
-    margin-right: 8px;
-    padding: 0 8px;
-    line-height: 48px;
+    margin-right: 4px;
+    padding: 0 4px;
+    line-height: 24px;
     background: #FF4B57;
     color: #fff;
-    font-size: 24px;
+    font-size: 12px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .label{
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
   }
   .level, .ragion-type, .years{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .address{
-    margin-top: 22px;
-    font-size: 24px;
+    margin-top: 11px;
+    font-size: 12px;
     color: #5C6066;
-    line-height: 36px;
+    line-height: 18px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

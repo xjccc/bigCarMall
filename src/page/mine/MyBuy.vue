@@ -52,6 +52,16 @@ export default {
     noMore: false
   }),
   created() {
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '我买的车'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
     // this.userid = this.$route.query.id
     // let info = this.getStorage('myBuyCarList')
     // if (info) {
@@ -112,7 +122,7 @@ export default {
       }
       this.setStorage('myBuyCarInfo', info)
       this.$router.push({
-        path: `/home/orderInfo/complete/${id}`,
+        path: `/dacheshi/orderInfo/complete/${id}`,
         query: {
           index: index
         }

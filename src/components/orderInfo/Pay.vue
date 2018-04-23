@@ -117,20 +117,20 @@ export default {
   .content{
     flex: 1;
     background: #fff;
-    height: 268px;
+    height: 134px;
     display: flex;
     flex-direction: column;
   }
   .all-content{
-    height: 388px;
+    height: 194px;
   }
   .item{
-    padding: 0 32px;
-    height: 78px;
+    padding: 0 16px;
+    height: 39px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-pay-header{
     display: flex;
@@ -139,61 +139,61 @@ export default {
     flex: 1;
   }
   .item-pay-header span{
-    font-size: 32px;
-    line-height: 80px;
+    font-size: 16px;
+    line-height: 40px;
     color: #333;
   }
   .item-pay-header .price-pay{
-    margin-left: 8px;
-    font-size: 32px;
-    line-height: 80px;
+    margin-left: 4px;
+    font-size: 16px;
+    line-height: 40px;
     color: #FF6600;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .item-pay-header .pre-price{
-    margin-left: 8px;
-    font-size: 24px;
-    line-height: 60px;
+    margin-left: 4px;
+    font-size: 12px;
+    line-height: 30px;
     color: #A1A9B2;
   }
   .tips{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 24px 32px 8px;
-    border-radius: 20px;
+    margin: 12px 16px 4px;
+    border-radius: 10px;
     background-color: #fff9f9;
-    border: solid 2px #ffd8d5;
+    border: 1px solid #ffd8d5;
   }
   .tips span{
-    font-size: 24px;
+    font-size: 12px;
     color: #ff6600;
   }
   .true-pay{
-    height: 96px;
-    line-height: 96px;
+    height: 48px;
+    line-height: 48px;
     background: #FF6600;
     text-align: center;
     color: #fff;
-    font-size: 36px;
+    font-size: 18px;
   }
   .paytype-bottom{
-    border-bottom: 2px solid #EDEDED;
-    height: 118px;
+    border-bottom: 1px solid #EDEDED;
+    height: 59px;
   }
   .choose-paytype{
-    padding: 0 32px;
-    height: 120px;
+    padding: 0 16px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .wx-icon{
     position: relative;
-    width: 76px;
-    height: 68px;
+    width: 38px;
+    height: 34px;
   }
   .wx-icon:before{
     position: absolute;
@@ -201,14 +201,14 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e714";
-    font-size: 68px;
-    line-height: 68px;
+    font-size: 34px;
+    line-height: 34px;
     color: #00B700;
   }
   .zfb-icon{
     position: relative;
-    width: 68px;
-    height: 68px;
+    width: 34px;
+    height: 34px;
   }
   .zfb-icon:before{
     position: absolute;
@@ -216,31 +216,31 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e716";
-    font-size: 68px;
-    line-height: 68px;
+    font-size: 34px;
+    line-height: 34px;
     color: #0799E2;
   }
   .type-content{
-    margin-left: 24px;
+    margin-left: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
   .choose-title{
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
-    line-height: 48px;
+    line-height: 24px;
   }
   .choose-des{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
   .choose{
-    width: 48px;
-    height: 48px;
-    border: 2px solid #D8D8D8;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #D8D8D8;
     border-radius: 50%;
     box-sizing: border-box;
   }
@@ -256,8 +256,8 @@ export default {
     transform: translate(-50%,-50%);
     font-family: 'carMall';
     content: "\e707";
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 12px;
     color: #fff;
   }
 </style>

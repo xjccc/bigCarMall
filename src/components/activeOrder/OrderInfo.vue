@@ -73,22 +73,22 @@ export default {
 </script>
 <style scoped>
   .order-info{
-    padding: 0 32px;
-    margin-top: 16px;
+    padding: 0 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     background-color: #fff;
   }
   .title{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    height: 78px;
-    line-height: 78px;
-    border-bottom: 2px solid #EDEDED;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: 1px solid #EDEDED;
   }
   .content{
     position: relative;
-    padding: 16px 0;
+    padding: 8px 0;
     display: flex;
     flex-direction: column;
   }
@@ -96,8 +96,8 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    width: 150px;
-    height: 120px;
+    width: 75px;
+    height: 60px;
   }
   .status-img img{
     width: 100%;
@@ -106,41 +106,41 @@ export default {
     object-fit: cover;
   }
   .item{
-    height: 60px;
-    line-height: 60px;
+    height: 30px;
+    line-height: 30px;
     display: flex;
     flex-direction: row;
   }
   .item span:first-child{
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
   }
   .item span:last-child{
-    margin-left: 16px;
-    font-size: 28px;
+    margin-left: 8px;
+    font-size: 14px;
     color: #17181A;
   }
   .item .price{
-    font-size: 28px;
+    font-size: 14px;
     color: #FF6600;
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .pay-type{
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .item .pay-type .type{
-    margin-left: 8px;
+    margin-left: 4px;
   }
   .icon{
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   .wx-icon:before{
     position: absolute;
@@ -148,8 +148,8 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e714";
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 20px;
     color: #00B700;
   }
   .zfb-icon:before{
@@ -158,26 +158,29 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e716";
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 20px;
     color: #0799E2;
   }
   .item-front{
     margin: 0 auto;
-    padding: 16px 0;
+    padding: 8px 0;
   }
   .item-content{
-    width: 576px;
-    height: 196px;
+    width: 288px;
+    height: 98px;
   }
   .order-now{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-now.png');
+    background-size: cover;
   }
   .order-used{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-used.png');
+    background-size: cover;
   }
   .order-invalid{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-invalid.png');
+    background-size: cover;
   }
   .order{
     display: flex;
@@ -185,15 +188,15 @@ export default {
     align-items: center;
   }
   .end-time{
-    margin-top: 24px;
-    font-size: 24px;
+    margin-top: 12px;
+    font-size: 12px;
     color: #fff;
-    line-height: 36px;
+    line-height: 18px;
   }
   .code{
-    margin-top: 20px;
-    font-size: 48px;
+    margin-top: 10px;
+    font-size: 24px;
     color: #fff;
-    line-height: 60px;
+    line-height: 30px;
   }
 </style>

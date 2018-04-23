@@ -24,52 +24,54 @@ export default {
   .car-info{
     display: flex;
     flex-direction: column;
-    padding: 24px 32px 0;
+    padding: 12px 16px 0;
     background: #fff;
   }
   .title{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    line-height: 40px;
+    line-height: 20px;
     text-overflow:ellipsis;
     word-break: break-all;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .price{
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 8px 0;
-    font-size: 28px;
+    padding: 4px 0;
+    font-size: 14px;
     color: #FF6600;
   }
   .price-tip{
-    padding-bottom: 16px;
-    font-size: 24px;
+    padding-bottom: 8px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
-    border-bottom: 2px solid #EDEDED;
+    line-height: 18px;
+    border-bottom: 1px solid #EDEDED;
   }
   .price-tip:before{
     font-family: 'carMall';
     content: "\e6b7";
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
+    margin-right: 4px;
+    width: 12px;
+    height: 12px;
     color: #CFD3D8;
   }
   .time{
-    height: 64px;
+    height: 32px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;;
   }
   .end-time{
-    margin-left: 24px;
+    margin-left: 12px;
   }
 </style>

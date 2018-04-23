@@ -17,9 +17,9 @@ export default {
 </script>
 <style scoped>
   .header{
-    padding: 0 32px;
-    margin-top: 16px;
-    height: 96px;
+    padding: 0 16px;
+    margin-top: 8px;
+    height: 48px;
     background: #fff;
     display: flex;
     flex-direction: row;
@@ -27,22 +27,22 @@ export default {
     justify-content: space-between;
   }
   .header-title{
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
     color: #17181A;
-    line-height: 60px;
+    line-height: 30px;
   }
   .more{
-    width: 160px;
+    width: 80px;
     text-align: right;
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 96px;
+    line-height: 48px;
   }
   .more:after{
     font-family: 'carMall';
-    margin-left: 8px;
-    font-size: 24px;
+    margin-left: 4px;
+    font-size: 12px;
     content: "\e70d";
     color: #CFD3D8;
   }

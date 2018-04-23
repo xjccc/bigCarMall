@@ -23,25 +23,25 @@ export default {
   .select-car{
     display: flex;
     flex-direction: row;
-    height: 88px;
+    height: 44px;
     background: #fff;
-    box-shadow: 0 -2px 0 0 #F5F5F5;
+    box-shadow: 0 -1px 0 0 #F5F5F5;
   }
   .select-car .filters{
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 24px;
+    padding: 12px;
     overflow: hidden;
   }
   .select-car .filters:after{
     content: "";
     position: absolute;
-    top: 24px;
+    top: 12px;
     right: 0;
-    width: 2px;
-    height: 40px;
+    width: 1px;
+    height: 20px;
     background: #EDEDED;
   }
   .select-car .filters:last-child:after{
@@ -51,9 +51,9 @@ export default {
     position: relative;
     display: flex;
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
-    line-height: 40px;
+    line-height: 20px;
     white-space: nowrap;
   }
   .select-car .filters span:after{
@@ -62,7 +62,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
     transform: scale(.5);
   }

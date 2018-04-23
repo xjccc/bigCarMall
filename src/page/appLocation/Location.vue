@@ -1,9 +1,5 @@
 <template>
-  <div :class="['location',locationShow ? 'visible' : '']">
-    <div class="header">
-      <div class="top-back" @click="locationPop">&#xe711;</div>
-      <h1 class="top-title">选择地区</h1>
-    </div>
+  <div class="location visible">
     <!-- 定位/常用 -->
     <span class="location-title" v-if="usedList.length">定位/常用</span>
     <div class="used-city" ref="used" v-if="usedList.length">
@@ -49,8 +45,8 @@
 </template>
 <script>
 let flag = true
+let app = false
 export default {
-  props: ['locationShow', 'list', 'navList', 'submit'],
   computed: {
     showAll() {
       if (this.$route.path === '/dacheshi/car/price') {
@@ -63,6 +59,17 @@ export default {
     usedList: [],
     cityTitle: '',
     cityList: [],
+    // 省份列表
+    list: [],
+    // 省份nav
+    navList: [],
+    // 选择地区 省份id
+    submit: {
+      // 省份
+      provincesn: '',
+      // 城市
+      citysn: ''
+    },
     showCity: false,
     tip: '',
     showTips: false,
@@ -79,11 +86,37 @@ export default {
     if (list) {
       this.usedList = list
     }
+    // 获取省份信息
+    let provincecitylist = this.getStorage('provincecitylist')
+    let provincecityletters = this.getStorage('provincecityletters')
+    this.list = provincecitylist
+    this.navList = provincecityletters
+    let city = this.getStorage('bigmallChooseCity')
+    if (city) {
+      this.submit.provincesn = city.provincesn
+      this.submit.citysn = city.citysn
+    }
+    this.setTitle()
   },
   methods: {
-    locationPop() {
-      this.showCity = false
-      this.$emit('locationPop')
+    setTitle() {
+      // app传title
+      this.callNativeMethod('onChangeWebTitle', {
+        changeWebTitle: '选择地区'
+      })
+      // 不显示分享按钮
+      this.callNativeMethod('onShowShareButton', {
+        isShow: false
+      })
+      let timer = setTimeout(() => {
+        if (!app) {
+          this.setTitle()
+        }
+        if (window.WebViewJavascriptBridge) {
+          app = true
+          timer && clearTimeout(timer)
+        }
+      }, 400)
     },
     // 点击右边栏跳转
     chooseLetter(item) {
@@ -95,12 +128,11 @@ export default {
       if (this.showAll) {
         this.$refs.content.scrollTop =
           this.$refs[`first_${item}`][0].offsetTop -
-          89 -
+          43 -
           (this.usedList.length ? this.$refs['used'].offsetHeight + 36 : 0)
       } else {
         this.$refs.content.scrollTop =
           this.$refs[`first_${item}`][0].offsetTop -
-          44 -
           (this.usedList.length ? this.$refs['used'].offsetHeight + 36 : 0)
       }
     },
@@ -149,15 +181,17 @@ export default {
     },
     // 选择常用地区
     chooseUsed(item) {
-      this.$emit('chooseUsed', item)
-      this.$emit('locationPop')
+      this.callNativeMethod('onLocationResult', {
+        location: item.cityName
+      })
       // 设置选择地区缓存
       this.setStorage('bigmallChooseCity', item)
     },
     // 选择全国
     chooseAll() {
-      this.$emit('chooseAll')
-      this.$emit('locationPop')
+      this.callNativeMethod('onLocationResult', {
+        location: '全国'
+      })
       this.showCity = false
       // 清除地区缓存
       this.removeStorage('bigmallChooseCity')
@@ -173,6 +207,9 @@ export default {
     },
     // 选择城市
     chooseCity(item) {
+      this.callNativeMethod('onLocationResult', {
+        location: item.cityname
+      })
       // 获取常用地区
       let list = this.getStorage('cityUsedList')
       if (list) {
@@ -199,8 +236,6 @@ export default {
       this.cityData.cityName = item.cityname
       this.setStorage('cityUsedList', this.usedList)
 
-      this.$emit('chooseCity', this.cityData)
-      this.$emit('locationPop')
       this.showCity = false
       // 设置选择地区缓存
       this.setStorage('bigmallChooseCity', this.cityData)

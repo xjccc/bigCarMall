@@ -81,31 +81,31 @@ export default {
   .content{
     flex: 1;
     background: #fff;
-    height: 252px;
+    height: 126px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
   }
   .share-friend,.share-circle{
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .share-friend{
-    margin-right: 54px;
+    margin-right: 27px;
   }
   .share-circle{
-    margin-left: 54px;
+    margin-left: 27px;
   }
   .icon{
-    margin-bottom: 14px;
+    margin-bottom: 7px;
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: #4DAE46;
   }
@@ -119,7 +119,7 @@ export default {
     transform: translate(-50%,-50%);
     font-family: 'carMall';
     content: "\e600";
-    font-size: 48px;
+    font-size: 24px;
     color: #fff;
   }
   .friend-icon:before{
@@ -129,11 +129,11 @@ export default {
     content: "\e70f";
   }
   .cancle-share{
-    margin-top: 8px;
-    font-size: 32px;
+    margin-top: 4px;
+    font-size: 16px;
     color: #17181A;
-    height: 96px;
-    line-height: 96px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
     background: #fff;
   }

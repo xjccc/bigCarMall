@@ -13,7 +13,7 @@ export default {
 </script>
 <style scoped>
   .item-footer{
-    height: 170px;
+    height: 85px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -21,20 +21,20 @@ export default {
     justify-content: center;
   }
   .item-footer .figure-car{
-    width: 70px;
-    height: 46px;
+    width: 35px;
+    height: 23px;
   }
   .item-footer .figure-pay{
-    width: 52px;
-    height: 60px;
+    width: 26px;
+    height: 30px;
   }
   .item-footer .figure-shop{
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
   }
   .item-footer .figure-price{
-    width: 52px;
-    height: 60px;
+    width: 26px;
+    height: 30px;
   }
   .item-footer figure img{
     width: 100%;
@@ -43,9 +43,9 @@ export default {
     vertical-align: middle;
   }
   .item-footer span{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 40px;
+    line-height: 20px;
   }
 </style>

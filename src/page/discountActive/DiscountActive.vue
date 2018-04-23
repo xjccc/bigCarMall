@@ -163,6 +163,43 @@ export default {
     if (brandletter) {
       this.allBrandLetter = brandletter
     }
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '促销新闻'
+    })
+    this.callNativeMethod('onShowLocationInfo', {
+      location: city && city.cityName ? city.cityName : '全国',
+      url:
+        'https://dealerm.360che.com/dacheshitest/dist/index.htm#/dacheshi/app/location'
+    })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
+  },
+  mounted() {
+    // app回调
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler(
+        'onLocationResultCallBack',
+        (data, responseCallback) => {
+          if (data) {
+            // 获取选择地区缓存
+            let city = this.getStorage('bigmallChooseCity')
+            if (city) {
+              this.submit.provincesn = city.provincesn
+              this.submit.citysn = city.citysn
+              this.cityData.province = city.provinceName
+              this.cityData.city = city.cityName
+            } else {
+              this.submit.provincesn = ''
+              this.submit.citysn = ''
+            }
+            this.resetFetch()
+          }
+        }
+      )
+    })
   },
   methods: {
     // 显示地区弹层
@@ -397,7 +434,7 @@ export default {
     flex-direction: column;
   }
   .active-content{
-    margin-top: 8px;
+    margin-top: 4px;
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

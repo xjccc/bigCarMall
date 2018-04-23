@@ -41,8 +41,8 @@ export default {
 </script>
 <style scoped>
   .used-brand{
-    margin-top: 16px;
-    padding: 24px 32px;
+    margin-top: 8px;
+    padding: 12px 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -50,19 +50,19 @@ export default {
     background: #fff;
   }
   .title{
-    font-size: 40px;
+    font-size: 20px;
     color: #17181A;
-    line-height: 60px;
+    line-height: 30px;
   }
   .descript{
     font-size: 0;
-    height: 36px;
-    line-height: 36px;
+    height: 18px;
+    line-height: 18px;
     color: #508DFD;
   }
   .used-truck {
-    margin-top: 16px;
-    padding: 24px 32px 32px;
+    margin-top: 8px;
+    padding: 12px 16px 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,28 +71,28 @@ export default {
   }
   .truck-descript{
     display: flex;
-    margin-top: 32px;
+    margin-top: 16px;
     font-size: 0;
     color: #508DFD;
   }
   .truck-descript span{
     flex: 1;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 4px 16px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 2px 8px;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 20px;
-    line-height: 32px;
+    border: 1px solid #CADDFF;
+    border-radius: 10px;
+    line-height: 16px;
     word-break: break-all;
   }
   .descript span{
     display: inline-block;
-    padding: 4px 16px;
-    font-size: 24px;
-    line-height: 24px;
+    padding: 2px 8px;
+    font-size: 12px;
+    line-height: 12px;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 20px;
+    border: 1px solid #CADDFF;
+    border-radius: 10px;
   }
 </style>

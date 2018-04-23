@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import ItemFooter from '@/components/Home/footer/ItemFooter'
+import ItemFooter from '@/components/home/footer/ItemFooter'
 
 export default {
   components: {
@@ -55,35 +55,35 @@ export default {
 </script>
 <style scoped>
   .footer{
-    margin-top: 16px;
+    margin-top: 8px;
     background: #fff;
   }
   .footer-content{
     display: flex;
     flex-direction: row;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .footer-info{
-    height: 160px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .concat{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 48px;
+    line-height: 24px;
   }
   .concat span{
-    font-size: 32px;
+    font-size: 16px;
     color: #508DFD;
-    line-height: 48px;
+    line-height: 24px;
   }
   .truck-home{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
 </style>

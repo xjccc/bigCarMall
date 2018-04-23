@@ -32,14 +32,14 @@ export default {
 </script>
 <style scoped>
   .swipers{
-    width: 750px;
-    height: 500px;
+    width: 100%;
+    height: 250px;
     overflow: hidden;
     background: #fff;
   }
   .swipers .swiper-slide figure{
     width: 100%;
-    height: 500px;
+    height: 250px;
   }
   .swipers .swiper-slide figure img{
     width: 100%;

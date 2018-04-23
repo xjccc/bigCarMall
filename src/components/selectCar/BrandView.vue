@@ -29,7 +29,7 @@ export default {
   props: ['showBrand', 'data', 'letter', 'id'],
   computed: {
     showAll() {
-      if (this.$route.path === '/home/car/price') {
+      if (this.$route.path === '/dacheshi/car/price') {
         return false
       }
       return true
@@ -63,10 +63,10 @@ export default {
       }, 500)
       if (this.showAll) {
         this.$refs.content.scrollTop =
-          this.$refs[`first_${item}`][0].offsetTop - 176 - 6
+          this.$refs[`first_${item}`][0].offsetTop - 88 - 3
       } else {
         this.$refs.content.scrollTop =
-          this.$refs[`first_${item}`][0].offsetTop - 88 - 6
+          this.$refs[`first_${item}`][0].offsetTop - 44 - 3
       }
     },
     // 滑动跳转
@@ -94,10 +94,10 @@ export default {
           this.showTips = true
           if (this.showAll) {
             this.$refs.content.scrollTop =
-              this.$refs[`first_${index}`][0].offsetTop - 176 - 6
+              this.$refs[`first_${index}`][0].offsetTop - 88 - 3
           } else {
             this.$refs.content.scrollTop =
-              this.$refs[`first_${index}`][0].offsetTop - 88 - 6
+              this.$refs[`first_${index}`][0].offsetTop - 44 - 3
           }
         }
       }
@@ -129,29 +129,29 @@ export default {
     transform: translate3d(0, 0, 0);
   }
   .header {
-    margin-bottom: 6px;
-    height: 88px;
-    line-height: 88px;
+    margin-bottom: 3px;
+    height: 44px;
+    line-height: 44px;
     text-align: center;
-    font-size: 36px;
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.06), 0 -2px 0 0 #F5F5F5;
+    font-size: 18px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.06), 0 -1px 0 0 #F5F5F5;
   }
   .back {
     position: absolute;
     left: 0;
     top: 0;
-    width: 120px;
-    height: 88px;
+    width: 60px;
+    height: 44px;
     color: #17181A;
-    line-height: 88px;
+    line-height: 44px;
     font-family: 'carMall'
   }
   .all{
-    height: 88px;
-    line-height: 88px;
+    height: 44px;
+    line-height: 44px;
     background: #fff;
-    padding-left: 32px;
-    font-size: 28px;
+    padding-left: 16px;
+    font-size: 14px;
     color: #17181A;
   }
   .content{
@@ -160,24 +160,24 @@ export default {
     -webkit-overflow-scrolling: touch;
   }
   .first-name{
-    padding-left: 32px;
-    height: 72px;
-    line-height: 72px;
+    padding-left: 16px;
+    height: 36px;
+    line-height: 36px;
     background: #F5F5F5;
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
   }
   .brand-name{
-    margin-left: 32px;
-    height: 86px;
-    line-height: 86px;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 28px;
+    margin-left: 16px;
+    height: 43px;
+    line-height: 43px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 14px;
     color: #17181A;
   }
   .brand-name:last-child{
-    height: 88px;
-    line-height: 88px;
+    height: 44px;
+    line-height: 44px;
     border-bottom: none;
   }
   .activeSelect{
@@ -185,15 +185,15 @@ export default {
   }
   .slider{
     position: fixed;
-    right: 8px;
-    top: 200px;
-    width: 36px;
+    right: 4px;
+    top: 100px;
+    width: 18px;
     text-align: center;
   }
   .slider-item{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 40px;
+    line-height: 20px;
   }
   .slider-visible{
     color: #0B0C00;
@@ -202,15 +202,15 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -80px;
-    margin-top: -80px;
-    width: 160px;
-    height: 160px;
+    margin-left: -40px;
+    margin-top: -40px;
+    width: 80px;
+    height: 80px;
     background: rgba(0,0,0,.6);
-    border-radius: 8px;
-    font-size: 96px;
+    border-radius: 4px;
+    font-size: 48px;
     color: #fff;
-    line-height: 160px;
+    line-height: 80px;
     text-align: center;
   }
 </style>

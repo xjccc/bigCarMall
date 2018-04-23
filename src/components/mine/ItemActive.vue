@@ -61,10 +61,10 @@ export default {
 <style scoped>
   .item-active{
     position: relative;
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: column;
-    padding: 0 32px;
+    padding: 0 16px;
     background: #fff;
   }
   .refund{
@@ -75,8 +75,8 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
-    width: 150px;
-    height: 120px;
+    width: 75px;
+    height: 60px;
   }
   .status-img img{
     width: 100%;
@@ -85,29 +85,32 @@ export default {
     object-fit: cover;
   }
   .order-num{
-    height: 76px;
-    line-height: 76px;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 28px;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 14px;
     color: #A1A9B2;
   }
   .item-front{
     margin: 0 auto;
-    padding: 16px 0;
-    border-bottom: 2px solid #EDEDED;
+    padding: 8px 0;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-content{
-    width: 576px;
-    height: 196px;
+    width: 288px;
+    height: 98px;
   }
   .order-now{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-now.png');
+    background-size: cover;
   }
   .order-used{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-used.png');
+    background-size: cover;
   }
   .order-invalid{
     background-image: url('https://s.kcimg.cn/bigCarMall/image/coupon-invalid.png');
+    background-size: cover;
   }
   .order{
     display: flex;
@@ -115,37 +118,37 @@ export default {
     align-items: center;
   }
   .end-time{
-    margin-top: 24px;
-    font-size: 24px;
+    margin-top: 12px;
+    font-size: 12px;
     color: #fff;
-    line-height: 36px;
+    line-height: 18px;
   }
   .code{
-    margin-top: 20px;
-    font-size: 48px;
+    margin-top: 10px;
+    font-size: 24px;
     color: #fff;
-    line-height: 60px;
+    line-height: 30px;
   }
   .item-footer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80px;
+    height: 40px;
   }
   .level{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .company-name{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;

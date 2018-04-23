@@ -47,16 +47,16 @@ export default {
   .select-car{
     display: flex;
     flex-direction: row;
-    height: 88px;
+    height: 44px;
     background: #fff;
-    box-shadow: 0 -2px 0 0 #F5F5F5;
+    box-shadow: 0 -1px 0 0 #F5F5F5;
   }
   .select-car .filters{
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 24px;
+    padding: 12px;
   }
   .select-car .new{
     position: relative;
@@ -64,13 +64,13 @@ export default {
   .hidden{
     display: none;
     position: absolute;
-    top: 92px;
+    top: 46px;
     left: 0;
     right: 0;
-    padding: 12px 24px;
+    padding: 6px 12px;
     background: #fff;
-    border-top: 2px solid #EDEDED;
-    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    border-top: 1px solid #EDEDED;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
   }
   .hidden-visible{
     display: block;
@@ -88,17 +88,17 @@ export default {
   }
   .hidden .new-item{
     text-align: center;
-    padding: 12px 0;
-    font-size: 30px;
-    line-height: 36px;
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 18px;
   }
   .select-car .filters:after{
     content: "";
     position: absolute;
-    top: 24px;
+    top: 12px;
     right: 0;
-    width: 2px;
-    height: 40px;
+    width: 1px;
+    height: 20px;
     background: #EDEDED;
   }
   .select-car .filters:last-child:after{
@@ -108,9 +108,9 @@ export default {
     position: relative;
     display: flex;
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
-    line-height: 40px;
+    line-height: 20px;
   }
   .select-car .filters span:after{
     font-family: 'carMall';
@@ -118,7 +118,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
     transform: scale(.5);
   }

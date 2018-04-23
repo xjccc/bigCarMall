@@ -33,36 +33,36 @@ export default {
 </script>
 <style scoped>
   .config{
-    margin-top: 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     background: #fff;
   }
   .config-title{
-    padding-left: 32px;
-    height: 110px;
-    line-height: 110px;
-    font-size: 40px;
+    padding-left: 16px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 20px;
     font-weight: bold;
     color: #17181A;
   }
   .item{
     display: flex;
     flex-direction: row;
-    min-height: 78px;
-    border-top: 2px solid #EDEDED;
+    min-height: 39px;
+    border-top: 1px solid #EDEDED;
   }
   .item-key{
     display: flex;
     align-items: center;
     background: #FAFAFA;
-    border-right: 2px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
   }
   .item-title{
-    width: 170px;
-    line-height: 78px;
+    width: 85px;
+    line-height: 39px;
     text-align: center;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;
@@ -70,22 +70,22 @@ export default {
   }
   .item-content{
     flex: 1;
-    font-size: 28px;
-    line-height: 78px;
+    font-size: 14px;
+    line-height: 39px;
     color: #17181A;
-    padding-left: 30px;
+    padding-left: 15px;
     word-break: break-all;
   }
   .show-more{
-    height: 78px;
-    line-height: 78px;
-    border-top: 2px solid #EDEDED;
+    height: 39px;
+    line-height: 39px;
+    border-top: 1px solid #EDEDED;
     text-align: center;
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
   }
   .show-more:after{
-    margin-left: 8px;
+    margin-left: 4px;
     font-family: 'carMall';
     content: "\e70d";
   }

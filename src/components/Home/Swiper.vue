@@ -50,21 +50,21 @@ export default {
 </script>
 <style scoped>
   .swipers{
-    width: 750px;
-    height: 348px;
+    width: 100%;
+    height: 174px;
     overflow: hidden;
     background: #fff;
   }
   .swiper-container{
-    width: 750px;
-    height: 348px;
+    width: 100%;
+    height: 174px;
   }
   .swiper-wrapper, .swiper-slide {
-    height: 300px;
+    height: 150px;
   }
   .swipers figure{
     width: 100%;
-    height: 300px;
+    height: 150px;
   }
   .swipers figure img{
     width: 100%;

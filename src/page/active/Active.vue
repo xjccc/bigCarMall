@@ -1,6 +1,6 @@
 <template>
   <div class="active">
-    <top-header :type="'location'" :title="'活动'" :data="cityData" @location="showSelectLocation"></top-header>
+    <top-header :type="'location'" :title="'抵扣券'" :data="cityData" @location="showSelectLocation"></top-header>
     <!-- 筛选头部 -->
     <filter-header @showBrand="showBrandView" :title="orderby" @selectType="selectType" :brandName="brand"></filter-header>
     <!-- 内容数据 -->
@@ -121,6 +121,20 @@ export default {
     // 获取品牌侧边栏字母
     let brandletter = this.getStorage('allbrandlistletters')
     this.allBrandLetter = brandletter
+
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '抵扣券'
+    })
+    this.callNativeMethod('onShowLocationInfo', {
+      location: city && city.cityName ? city.cityName : '全国',
+      url:
+        'https://dealerm.360che.com/dacheshitest/dist/index.htm#/dacheshi/app/location'
+    })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   mounted() {
     // 设置标题头
@@ -129,6 +143,28 @@ export default {
     }折扣卷】${new Date().getFullYear()}${
       this.cityData.city ? this.cityData.city : '全国'
     }/促销价格_手机卡车之家大车市`
+    // app回调
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler(
+        'onLocationResultCallBack',
+        (data, responseCallback) => {
+          if (data) {
+            // 获取选择地区缓存
+            let city = this.getStorage('bigmallChooseCity')
+            if (city) {
+              this.submit.provincesn = city.provincesn
+              this.submit.citysn = city.citysn
+              this.cityData.province = city.provinceName
+              this.cityData.city = city.cityName
+            } else {
+              this.submit.provincesn = ''
+              this.submit.citysn = ''
+            }
+            this.resetFetch()
+          }
+        }
+      )
+    })
   },
   methods: {
     // 请求数据
@@ -194,7 +230,7 @@ export default {
       this.activeInfo.submit = this.submit
       this.activeInfo.brand = this.brand
       this.setStorage('ActiveInfo', this.activeInfo)
-      this.$router.push({ path: `/home/active/detail/${id}` })
+      this.$router.push({ path: `/dacheshi/active/detail/${id}` })
     },
     // 显示地区弹层
     showSelectLocation() {
@@ -311,8 +347,8 @@ export default {
     flex-direction: column;
   }
   .content{
-    margin-top: 8px;
-    padding-bottom: 16px;
+    margin-top: 4px;
+    padding-bottom: 8px;
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

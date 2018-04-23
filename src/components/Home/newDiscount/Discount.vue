@@ -10,7 +10,7 @@
 </template>
 <script>
 import ItemHeader from '@/components/ItemHeader'
-import ItemDiscount from '@/components/Home/newDiscount/ItemDiscount'
+import ItemDiscount from '@/components/home/newDiscount/ItemDiscount'
 
 export default {
   props: ['data'],
@@ -21,7 +21,7 @@ export default {
   data: () => ({}),
   methods: {
     getMoreDiscount() {
-      this.$router.push('/home/active')
+      this.$router.push('/dacheshi/active')
     }
   }
 }
@@ -31,7 +31,7 @@ export default {
     background: #fff;
   }
   .discount-content .item-discount:first-child{
-    padding: 20px 32px 32px;
+    padding: 10px 16px 16px;
   }
   .discount-content .item-discount:last-child{
     border-bottom: 0;

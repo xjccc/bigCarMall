@@ -40,25 +40,25 @@ export default {
 </script>
 <style scoped>
   .item-select{
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: column;
-    padding: 0 32px;
+    padding: 0 16px;
     background: #fff;
   }
   .item-front{
     display: flex;
     flex-direction: row;
-    padding: 32px 0 14px;
-    border-bottom: 2px solid #EDEDED;
+    padding: 16px 0 7px;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-front-no-line{
-    padding: 32px 0 16px;
+    padding: 16px 0 8px;
     border-bottom: 0;
   }
   .item-front figure{
-    width: 240px;
-    height: 160px;
+    width: 120px;
+    height: 80px;
   }
   .item-front figure img{
     width: 100%;
@@ -67,7 +67,7 @@ export default {
     vertical-align: middle;
   }
   .item-content{
-    margin-left: 16px;
+    margin-left: 8px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -75,28 +75,30 @@ export default {
     overflow: hidden;
   }
   .title{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    height: 80px;
-    line-height: 40px;
+    height: 40px;
+    line-height: 20px;
     word-break: break-all;
     text-overflow:ellipsis;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .descript{
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .descript span{
     white-space: nowrap;
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 24px;
+    line-height: 12px;
   }
   .descript .engine{
     overflow: hidden;
@@ -104,57 +106,57 @@ export default {
   }
   .descript em{
     position: relative;
-    margin: 0 16px;
-    width: 2px;
-    height: 20px;
+    margin: 0 8px;
+    width: 1px;
+    height: 10px;
   }
   .descript em:before{
     position: absolute;
     content: "";
-    width: 2px;
-    height: 20px;
+    width: 1px;
+    height: 10px;
     top: 0;
     left: 0;
     background: #A1A9B2;
   }
   .price{
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
   }
   .price-front{
-    font-size: 24px;
+    font-size: 12px;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
   }
   .true-price{
-    font-size: 28px;
+    font-size: 14px;
     font-weight: bold;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
   }
   .item-footer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80px;
+    height: 40px;
   }
   .level{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .company-name{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;

@@ -68,6 +68,16 @@ export default {
     if (userInfo) {
       this.userInfo = userInfo
     }
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '个人中心'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   methods: {
     // 注销操作
@@ -78,14 +88,14 @@ export default {
     // 我买的车
     toMyBuy() {
       this.$router.push({
-        path: '/home/mine/mycar',
+        path: '/dacheshi/mine/mycar',
         query: { id: this.userInfo.uid }
       })
     },
     // 我参加的活动
     toMyActive() {
       this.$router.push({
-        path: '/home/mine/myactive',
+        path: '/dacheshi/mine/myactive',
         query: { id: this.userInfo.uid }
       })
     },
@@ -99,11 +109,11 @@ export default {
     },
     // 意见反馈
     toSuggest() {
-      this.$router.push('/home/mine/suggest')
+      this.$router.push('/dacheshi/mine/suggest')
     },
     // 返回首页
     toHome() {
-      this.$router.replace('/home')
+      this.$router.replace('/dacheshi')
     },
     // 合作热线
     telUs() {
@@ -131,12 +141,12 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 40px 32px 40px 40px;
+    padding: 20px 16px 20px 20px;
     background: #fff;
   }
   .userInfo img{
-    width: 160px;
-    height: 160px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     vertical-align: middle;
     object-fit: cover;
@@ -144,105 +154,105 @@ export default {
   }
   .user-content{
     flex: 1;
-    margin-left: 24px;
+    margin-left: 12px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
   .user-name{
-    font-size: 36px;
+    font-size: 18px;
     color: #333;
-    line-height: 52px;
+    line-height: 26px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .level{
-    margin-top: 8px;
-    font-size: 28px;
+    margin-top: 4px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 40px;
+    line-height: 20px;
   }
   .calory{
-    margin-top: 12px;
-    font-size: 28px;
+    margin-top: 6px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 48px;
+    line-height: 24px;
   }
   .login-out{
-    font-size: 28px;
+    font-size: 14px;
     color: #508DFD;
-    line-height: 52px;
+    line-height: 26px;
   }
   .mine-content{
-    margin-top: 16px;
+    margin-top: 8px;
     background: #fff;
   }
   .mine-item{
-    padding-left: 40px;
+    padding-left: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 88px;
+    height: 44px;
   }
   .mine-item .icon{
     position: relative;
     font-family: 'carMall';
     color: #5C6066;
-    width: 56px;
-    height: 32px;
-    font-size: 32px;
-    line-height: 32px;
+    width: 28px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 16px;
   }
   .mine-item .icon:before{
     position: absolute;
     top: 0;
-    left: 8px;
+    left: 4px;
   }
   .mine-item .icon.icon-car:before{
     content: "\e70a";
   }
   .mine-item .icon.icon-active:before{
-    left: 10px;
+    left: 5px;
     content: "\e70b";
   }
   .mine-item .icon.icon-suggest:before{
     content: "\e709";
   }
   .mine-item .icon.icon-service:before{
-    left: 10px;
+    left: 5px;
     content: "\e70c";
   }
   .icon-home:before{
     content: "\e713";
   }
   .mine-item .item-title{
-    margin-left: 20px;
+    margin-left: 10px;
     flex: 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #333;
   }
   .mine-footer{
-    height: 160px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   .concat{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 48px;
+    line-height: 24px;
   }
   .concat span{
-    font-size: 32px;
+    font-size: 16px;
     color: #508DFD;
-    line-height: 48px;
+    line-height: 24px;
   }
   .truck-home{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
 </style>

@@ -53,6 +53,16 @@ export default {
     noMore: false
   }),
   created() {
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '我参加的活动'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
     // this.userid = this.$route.query.id
     // this.fetch()
   },
@@ -108,7 +118,7 @@ export default {
       }
       this.setStorage('myActiveInfo', info)
       this.$router.push({
-        path: `/home/active/complete/${id}`,
+        path: `/dacheshi/active/complete/${id}`,
         query: {
           index: index
         }

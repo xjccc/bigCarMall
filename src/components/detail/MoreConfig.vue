@@ -86,47 +86,47 @@ export default {
   }
   .content{
     flex: 1;
-    height: 720px;
+    height: 360px;
     background: #fff;
     display: flex;
     flex-direction: column;
   }
   .title{
-    height: 76px;
-    line-height: 76px;
+    height: 38px;
+    line-height: 38px;
     text-align: center;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 32px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 16px;
     color: #333;
   }
   .item{
     display: flex;
     flex-direction: row;
-    min-height: 78px;
-    border-top: 2px solid #EDEDED;
+    min-height: 39px;
+    border-top: 1px solid #EDEDED;
   }
   .item-key{
     display: flex;
     align-items: center;
     background: #FAFAFA;
-    border-right: 2px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
   }
   .item-title{
-    width: 170px;
-    line-height: 78px;
+    width: 85px;
+    line-height: 39px;
     text-align: center;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .item-content{
-    font-size: 28px;
-    line-height: 78px;
+    font-size: 14px;
+    line-height: 39px;
     color: #17181A;
     flex: 1;
-    padding-left: 30px;
+    padding-left: 15px;
     word-break: break-all;
   }
   .detail-content{
@@ -135,26 +135,26 @@ export default {
     -webkit-overflow-scrolling: touch;
   }
   .detail-content>.item:first-child{
-    min-height: 80px;
-    line-height: 80px;
+    min-height: 40px;
+    line-height: 40px;
     border-top: 0;
   }
   .details{
-    padding: 24px 32px;
+    padding: 12px 16px;
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
-    line-height: 40px;
+    line-height: 20px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .close{
-    margin-top: 8px;
-    height: 96px;
-    line-height: 96px;
+    margin-top: 4px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
     background: #fff;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
   }
 </style>

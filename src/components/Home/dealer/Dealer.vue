@@ -10,7 +10,7 @@
 </template>
 <script>
 import ItemHeader from '@/components/ItemHeader'
-import ItemDealer from '@/components/Home/dealer/ItemDealer'
+import ItemDealer from '@/components/home/dealer/ItemDealer'
 
 export default {
   props: ['dealer'],
@@ -21,7 +21,7 @@ export default {
   data: () => ({}),
   methods: {
     getMoreDiscount() {
-      this.$router.push('/home/dealer')
+      this.$router.push('/dacheshi/dealer')
     },
     toDetail(url) {
       window.location.href = url
@@ -34,11 +34,11 @@ export default {
     background: #fff;
   }
   .dealer .item-dealer:first-child{
-    margin-top: 10px;
-    padding:  0 32px 32px;
+    margin-top: 5px;
+    padding:  0 16px 16px;
   }
   .dealer .item-dealer:last-child{
-    height: 184px;
+    height: 92px;
     border: 0;
   }
 </style>

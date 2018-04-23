@@ -1,4 +1,5 @@
 <template>
+   <!-- v-if="getType() !== 'app'" -->
   <div class="top" v-if="getType() !== 'app'">
     <div class="top-back" @click="back">&#xe711;</div>
     <h1 class="top-title">{{title}}</h1>
@@ -31,7 +32,7 @@ export default {
     // 返回键
     back() {
       if (window.history.length <= 1) {
-        this.$router.replace('/home')
+        this.$router.replace('/dacheshi')
       } else {
         this.$router.go(-1)
       }
@@ -45,7 +46,7 @@ export default {
         this.$emit('share')
       } else if (this.type === 'home') {
         // 返回首页
-        this.$router.replace('/home')
+        this.$router.replace('/dacheshi')
       }
     }
   }
@@ -54,26 +55,26 @@ export default {
 <style scoped>
   .top{
     position: relative;
-    padding: 0 32px;
-    height: 88px;
-    line-height: 88px;
+    padding: 0 16px;
+    height: 44px;
+    line-height: 44px;
     background-color: #fff;
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.06), 0 -2px 0 0 #F5F5F5;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.06), 0 -1px 0 0 #F5F5F5;
     z-index: 5;
   }
   .top-back{
     position: absolute;
     top: 0;
-    left: 32px;
-    width: 88px;
-    height: 88px;
-    line-height: 88px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
     font-family: 'carMall';
-    font-size: 36px;
+    font-size: 18px;
     color: #17181A;
   }
   .top-title{
-    font-size: 36px;
+    font-size: 18px;
     color: #333;
     font-weight: bold;
     text-align: center;
@@ -81,15 +82,15 @@ export default {
   .select-city{
     position: absolute;
     top: 0;
-    right: 32px;
+    right: 16px;
     display: flex;
     flex-direction: row;
-    line-height: 88px;
+    line-height: 44px;
   }
   .city{
-    max-width: 200px;
-    height: 88px;
-    font-size: 28px;
+    max-width: 100px;
+    height: 44px;
+    font-size: 14px;
     color: #17181A;
     text-align: right;
     overflow: hidden;
@@ -98,24 +99,24 @@ export default {
   }
   .select-city:before{
     position: absolute;
-    top: 32px;
-    left: -36px;
+    top: 16px;
+    left: -18px;
     font-family: 'carMall';
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 14px;
+    line-height: 14px;
     content: "\e71a";
     color: #FF6600;
   }
   .icon{
     position: absolute;
-    right: 8px;
+    right: 4px;
     top: 0;
     font-family: 'carMall';
     text-align: center;
-    font-size: 36px;
-    width: 88px;
-    height: 88px;
-    line-height: 88px;
+    font-size: 18px;
+    width: 44px;
+    height: 44px;
+    line-height: 44px;
   }
   .to-home:after{
     content: "\e713";

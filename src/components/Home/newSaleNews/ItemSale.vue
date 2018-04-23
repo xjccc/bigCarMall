@@ -26,19 +26,19 @@ export default {
 </script>
 <style scoped>
   .item-news{
-    padding: 0 32px;
+    padding: 0 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80px;
+    height: 40px;
   }
   .pre-type{
-    width: 48px;
-    height: 24px;
-    line-height: 24px;
-    padding: 6px 8px;
-    font-size: 24px;
-    border-radius: 4px;
+    width: 24px;
+    height: 12px;
+    line-height: 12px;
+    padding: 3px 4px;
+    font-size: 12px;
+    border-radius: 2px;
     color: #fff;
   }
   .type-discount{
@@ -49,19 +49,19 @@ export default {
   }
   .news-title{
     flex: 1;
-    margin-left: 8px;
-    font-size: 28px;
+    margin-left: 4px;
+    font-size: 14px;
     color: #17181A;
-    line-height: 80px;
+    line-height: 40px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .creat-time{
-    width: 90px;
-    font-size: 28px;
+    width: 45px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 80px;
+    line-height: 40px;
     text-align: right;
   }
 </style>

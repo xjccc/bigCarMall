@@ -89,7 +89,7 @@ export default {
   }
   .content{
     flex: 1;
-    max-height: 720px;
+    max-height: 360px;
     background: #fff;
     display: flex;
     flex-direction: column;
@@ -112,32 +112,32 @@ export default {
     display: block;
   }
   .data-item{
-    padding: 0 32px;
-    height: 88px;
-    line-height: 88px;
+    padding: 0 16px;
+    height: 44px;
+    line-height: 44px;
     text-align: center;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .data-item:last-child{
-    height: 90px;
-    line-height: 90px;
+    height: 45px;
+    line-height: 45px;
     border-bottom: 0;
   }
   .title{
-    height: 76px;
-    line-height: 76px;
+    height: 38px;
+    line-height: 38px;
     text-align: center;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 32px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 16px;
     color: #333;
   }
   .close{
-    margin-top: 8px;
-    height: 96px;
-    line-height: 96px;
+    margin-top: 4px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
     background: #fff;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
   }
 </style>

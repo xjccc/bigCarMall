@@ -25,36 +25,36 @@ export default {
 </script>
 <style scoped>
   .buyer{
-    padding: 0 32px;
-    margin-top: 16px;
+    padding: 0 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     background: #fff;
   }
   .content{
-    padding: 16px 0;
+    padding: 8px 0;
     display: flex;
     flex-direction: column;
   }
   .title{
     font-weight: bold;
-    height: 78px;
-    line-height: 78px;
-    border-bottom: 2px solid #EDEDED;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: 1px solid #EDEDED;
   }
   .item{
-    height: 60px;
-    line-height: 60px;
+    height: 30px;
+    line-height: 30px;
     display: flex;
     flex-direction: row;
   }
   .item span:first-child{
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
   }
   .item span:last-child{
-    margin-left: 16px;
-    font-size: 28px;
+    margin-left: 8px;
+    font-size: 14px;
     color: #17181A;
   }
 </style>

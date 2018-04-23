@@ -15,22 +15,29 @@ export default {
   data: () => ({}),
   methods: {
     toDetail(id) {
-      this.$router.push({ path: `/home/carDetail/${id}` })
+      this.$router.push({ path: `/dacheshi/carDetail/${id}` })
     }
   }
 }
 </script>
 <style scoped>
   .item-quoted{
-    margin-bottom: 32px;
-    width: 330px;
-    height: 360px;
+    position: relative;
+    margin-bottom: 16px;
+    height: 180px;
+    width: calc(50vw - 20px);
     display: flex;
     flex-direction: column;
   }
+  .item-quoted:nth-child(2n-1){
+    margin-right: 4px;
+  }
+  .item-quoted:nth-child(2n){
+    margin-left: 4px;
+  }
   .item-quoted figure{
-    width: 330px;
-    height: 220px;
+    width: 100%;
+    height: 110px;
   }
   .item-quoted figure img{
     width: 100%;
@@ -40,27 +47,29 @@ export default {
   }
   .descripe{
     flex: 1;
-    margin-top: 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .detail{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    line-height: 40px;
+    line-height: 20px;
     text-overflow:ellipsis;
     overflow:hidden;
     word-break: break-all;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .price{
-    margin-top: 4px;
-    font-size: 28px;
+    margin-top: 2px;
+    font-size: 14px;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
     font-weight: bold;
   }
 </style>

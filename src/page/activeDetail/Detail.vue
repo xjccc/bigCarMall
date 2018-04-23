@@ -53,7 +53,7 @@ import WhyChoose from '@/components/detail/WhyChoose'
 import ShareInfo from '@/components/ShareInfo'
 import WxShare from '@/components/WxShare'
 import MShare from '@/components/MShare'
-import TruckLogin from '../../../node_modules/login'
+import TruckLogin from '../../mixins/login.js'
 
 export default {
   components: {
@@ -122,6 +122,17 @@ export default {
   created() {
     this.id = this.$route.params.id
     this.fetch()
+
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '活动详情'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 显示分享
+    this.callNativeMethod('onShowShareButton', {
+      isShow: true
+    })
   },
   mounted() {
     // 判断登录状态
@@ -172,6 +183,17 @@ export default {
               this.removeStorage('bigCarMallUserInfo')
             }
           }
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
+        },
+        e => {
+          console.log(e, 'catch')
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
         }
       )
     },
@@ -225,8 +247,6 @@ export default {
             }支付${res.data.Margin}元抵扣${res.data.Deductible}元。${
               res.data.TitleStr
             }价格信息，由【卡车之家大车市】提供`
-            // 取消loading
-            this.isLoading = false
             // 分享配置
             this.shareNowPage()
           }
@@ -247,7 +267,7 @@ export default {
       } else {
         this.$set(this.dealerInfoData, 'dealerUrl', '')
         this.$router.push({
-          path: '/home/active/confirm',
+          path: '/dacheshi/active/confirm',
           query: {
             info: JSON.stringify(this.carInfoData),
             dealerInfo: JSON.stringify(this.dealerInfoData),
@@ -301,29 +321,29 @@ export default {
   }
   .detail-content{
     flex: 1;
-    padding-bottom: 116px;
+    padding-bottom: 58px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .rules{
-    margin-top: 16px;
-    padding: 16px 32px;
+    margin-top: 8px;
+    padding: 8px 16px;
     display: flex;
     flex-direction: column;
     background: #fff;
   }
   .rule-content{
-    margin-top: 32px;
-    font-size: 28px;
+    margin-top: 16px;
+    font-size: 14px;
     color: #5C6066;
-    line-height: 40px;
+    line-height: 20px;
   }
   .detail-footer{
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 100px;
+    height: 50px;
     background: #fff;
     box-shadow: 0 0 0 0 #DDDDDD;
     display: flex;
@@ -337,13 +357,13 @@ export default {
     color: #5C6066;
   }
   .buyCall:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e706";
     color: #5C6066;
   }
   .ordered{
-    height: 100px;
+    height: 50px;
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -362,14 +382,14 @@ export default {
   }
   .look-car{
     font-weight: bold;
-    font-size: 36px;
+    font-size: 18px;
     color: #fff;
-    line-height: 40px;
+    line-height: 20px;
   }
   .pre-pay{
-    margin-top: 4px;
-    font-size: 24px;
+    margin-top: 2px;
+    font-size: 12px;
     color: rgba(255,255,255,0.70);
-    line-height: 28px;
+    line-height: 14px;
   }
 </style>

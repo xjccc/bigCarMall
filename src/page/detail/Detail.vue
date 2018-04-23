@@ -10,7 +10,7 @@
       <div class="show-tips">
         <span>真实车源</span>
         <span>认证商家</span>
-        <span>定金随时退</span>
+        <span>订金随时退</span>
         <span>支付无忧</span>
       </div>
       <!-- 其他优惠 -->
@@ -74,7 +74,7 @@ import NewCar from '@/components/detail/NewCar'
 import ShareInfo from '@/components/ShareInfo'
 import WxShare from '@/components/WxShare'
 import MShare from '@/components/MShare'
-import TruckLogin from '../../../node_modules/login'
+import TruckLogin from '../../mixins/login.js'
 
 export default {
   components: {
@@ -151,6 +151,16 @@ export default {
   created() {
     this.id = this.$route.params.id
     this.fetch()
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '车型详情'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 显示分享
+    this.callNativeMethod('onShowShareButton', {
+      isShow: true
+    })
   },
   mounted() {
     // 判断登录状态
@@ -201,6 +211,17 @@ export default {
               this.removeStorage('bigCarMallUserInfo')
             }
           }
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
+        },
+        e => {
+          console.log(e, 'catch')
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
         }
       )
     },
@@ -252,8 +273,6 @@ export default {
             }报价：商城价${res.data.VehiclePrice}万元，${
               res.data.Introduction
             }。${res.data.TitleStr}价格信息，由【卡车之家大车市】提供`
-            // 取消loading
-            this.isLoading = false
             // 分享设置
             this.shareNowPage()
           }
@@ -266,7 +285,7 @@ export default {
     },
     // 其他优惠
     otherCoupon(id) {
-      this.$router.push({ path: `/home/active/detail/${id}` })
+      this.$router.push({ path: `/dacheshi/active/detail/${id}` })
     },
     // 显示更多参数
     showMoreDetail() {
@@ -278,7 +297,7 @@ export default {
     },
     // 跳转详情
     toDetail(id) {
-      this.$router.push({ path: `/home/carDetail/${id}` })
+      this.$router.push({ path: `/dacheshi/carDetail/${id}` })
     },
     // 更多新车跳转店铺
     moreCar() {
@@ -297,7 +316,7 @@ export default {
         TruckLogin.ToLogin()
       } else {
         this.$router.push({
-          path: '/home/orderInfo/confirm',
+          path: '/dacheshi/orderInfo/confirm',
           query: {
             info: JSON.stringify(this.carInfoData),
             img: this.imgData[0].ImgUrl,
@@ -345,6 +364,7 @@ export default {
     this.isLoading = true
     this.$refs.detail.scrollTop = 0
     this.fetch()
+    this.getUserUid()
     next()
   }
 }
@@ -359,62 +379,62 @@ export default {
   }
   .detail-content{
     flex: 1;
-    padding-bottom: 116px;
+    padding-bottom: 58px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   .new-discount{
     font-size: 0;
-    padding: 0 32px 20px;
+    padding: 0 16px 10px;
     background: #fff;
   }
   .new-discount-pre{
     display: inline-block;
-    width: 48px;
-    height: 24px;
-    line-height: 24px;
-    padding: 6px 8px;
-    font-size: 24px;
-    border-radius: 4px;
+    width: 24px;
+    height: 12px;
+    line-height: 12px;
+    padding: 3px 4px;
+    font-size: 12px;
+    border-radius: 2px;
     color: #fff;
     background-color: #F44336;
   }
   .new-discount-title{
     flex: 1;
     word-break: break-all;
-    font-size: 28px;
-    line-height: 40px;
+    font-size: 14px;
+    line-height: 20px;
     color: #17181A;
-    margin-left: 8px;
+    margin-left: 4px;
   }
   .new-discount-content{
-    padding: 12px 0;
+    padding: 6px 0;
   }
   .new-discount-header{
-    margin-top: 16px;
-    height: 96px;
+    margin-top: 8px;
+    height: 48px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
   .header-title{
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
     color: #17181A;
-    line-height: 60px;
+    line-height: 30px;
   }
   .more{
-    width: 160px;
+    width: 80px;
     text-align: right;
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
-    line-height: 96px;
+    line-height: 48px;
   }
   .more:after{
     font-family: 'carMall';
-    margin-left: 8px;
-    font-size: 24px;
+    margin-left: 4px;
+    font-size: 12px;
     content: "\e70d";
     color: #CFD3D8;
   }
@@ -422,17 +442,17 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 12px 32px;
+    padding: 6px 16px;
     background: #FAFAFA;
   }
   .show-tips span{
-    margin-right: 24px;
-    font-size: 24px;
+    margin-right: 12px;
+    font-size: 12px;
     color: #94BAFF;
-    line-height: 36px;
+    line-height: 18px;
   }
   .show-tips span:before{
-    margin-right: 4px;
+    margin-right: 2px;
     font-family: 'carMall';
     content: "\e6b0";
   }
@@ -441,7 +461,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 100px;
+    height: 50px;
     background: #fff;
     box-shadow: 0 0 0 0 #DDDDDD;
     display: flex;
@@ -455,13 +475,13 @@ export default {
     color: #5C6066;
   }
   .buyCall:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e706";
     color: #5C6066;
   }
   .ordered{
-    height: 100px;
+    height: 50px;
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -480,14 +500,14 @@ export default {
   }
   .look-car{
     font-weight: bold;
-    font-size: 36px;
+    font-size: 18px;
     color: #fff;
-    line-height: 40px;
+    line-height: 20px;
   }
   .pre-pay{
-    margin-top: 4px;
-    font-size: 24px;
+    margin-top: 2px;
+    font-size: 12px;
     color: rgba(255,255,255,0.70);
-    line-height: 28px;
+    line-height: 14px;
   }
 </style>

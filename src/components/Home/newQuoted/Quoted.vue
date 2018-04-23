@@ -1,6 +1,6 @@
 <template>
   <div class="quoted">
-    <item-header :title="'最新报价'" @more="getMoreQuoted"></item-header>
+    <item-header :title="'最新一口价'" @more="getMoreQuoted"></item-header>
     <div class="quoted-content">
       <template v-for="item in listData">
         <item-quoted :item="item"></item-quoted>
@@ -10,7 +10,7 @@
 </template>
 <script>
 import ItemHeader from '@/components/ItemHeader'
-import ItemQuoted from '@/components/Home/newQuoted/ItemQuoted'
+import ItemQuoted from '@/components/home/newQuoted/ItemQuoted'
 
 export default {
   props: ['listData'],
@@ -21,7 +21,7 @@ export default {
   data: () => ({}),
   methods: {
     getMoreQuoted() {
-      this.$router.push('/home/car')
+      this.$router.push('/dacheshi/car')
     }
   }
 }
@@ -31,7 +31,7 @@ export default {
     background: #fff;
   }
   .quoted-content{
-    padding: 20px 32px 0;
+    padding: 10px 16px 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

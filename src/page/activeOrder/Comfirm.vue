@@ -1,6 +1,6 @@
 <template>
   <div class="confirm" v-cloak>
-    <top-header :title="'活动详情'"></top-header>
+    <top-header :title="'活动订单'"></top-header>
     <div class="confirm-content">
       <!-- 显示车辆信息 -->
       <car-info :info="info"></car-info>
@@ -68,12 +68,22 @@ export default {
       this.userInfo = info
       this.telNumber = info.mobile
     }
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '活动订单'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   mounted() {
     this.connectWebViewJavascriptBridge(bridge => {
       bridge.registerHandler('onPayCallback', (data, responseCallback) => {
         if (data === 'success') {
-          this.$router.replace(`/home/active/complete/${this.code}`)
+          this.$router.replace(`/dacheshi/active/complete/${this.code}`)
         }
       })
     })
@@ -218,49 +228,49 @@ export default {
     flex: 1;
   }
   .item-info{
-    margin-top: 16px;
-    padding: 0 32px;
+    margin-top: 8px;
+    padding: 0 16px;
     background: #fff;
   }
   .item-info > .item-person{
-    height: 78px;
-    line-height: 78px;
-    font-size: 28px;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
     color: #17181A;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-info > .item{
-    height: 88px;
+    height: 44px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-info > .item:last-child{
-    height: 90px;
+    height: 45px;
     border-bottom: 0;
   }
   .item-info > .item span{
-    width: 128px;
-    font-size: 32px;
+    width: 64px;
+    font-size: 16px;
     color: #5C6066;
   }
   .item-info > .item input{
-    margin-left: 24px;
+    margin-left: 12px;
     flex : 1;
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
   }
   .item-info > .item input::-webkit-input-placeholder{
-    font-size: 32px;
+    font-size: 16px;
     color: #D1D1D1;
   }
   .item-info > .item em{
-    font-size: 32px;
+    font-size: 16px;
     color: #F44336;
   }
   .item-info > .item-text{
-    padding-bottom: 32px;
+    padding-bottom: 16px;
     display: flex;
     flex-direction: column;
   }
@@ -269,9 +279,9 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 32px;
+    font-size: 16px;
     color: #5C6066;
-    line-height: 88px;
+    line-height: 44px;
   }
   .text-title span{
     display: flex;
@@ -279,30 +289,30 @@ export default {
     align-items: center;
   }
   .content-num{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 88px;
+    line-height: 44px;
   }
   .text-title em{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 88px;
+    line-height: 44px;
   }
   .item-info > .item-text textarea{
     width: 100%;
-    padding: 16px;
+    padding: 8px;
     background: #F3F4F5;
-    border: 2px solid #EDEDED;
-    border-radius: 4px;
-    font-size: 28px;
+    border: 1px solid #EDEDED;
+    border-radius: 2px;
+    font-size: 14px;
     resize: none;
   }
   .item-info > .item-text textarea::-webkit-input-placeholder{
-    font-size: 28px;
+    font-size: 14px;
     color: #A1A9B2;
   }
   .confirm-footer{
-    height: 100px;
+    height: 50px;
     background: #fff;
     box-shadow: 0 0 0 0 #DDDDDD;
     display: flex;
@@ -311,12 +321,12 @@ export default {
   }
   .buy-call{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
     text-align: center;
   }
   .buy-call:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e706";
     color: #5C6066;
@@ -324,9 +334,9 @@ export default {
   .pay-money{
     flex: 2;
     background: #FF6600;
-    line-height: 100px;
+    line-height: 50px;
     text-align: center;
-    font-size: 36px;
+    font-size: 18px;
     color: #fff;
   }
 </style>

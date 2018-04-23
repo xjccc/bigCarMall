@@ -119,6 +119,17 @@ export default {
     if (brandletter) {
       this.allBrandLetter = brandletter
     }
+
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '获取报价'
+    })
+    // 没有地区筛选
+    this.callNativeMethod('onShowLocationInfo', { location: '' })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   methods: {
     // 显示品牌弹层
@@ -132,15 +143,17 @@ export default {
         this.dialogShowToast = true
         return
       }
-      this.getData(
-        `https://dealer-api.360che.com/Dealer/getSeriesCategory.aspx?bid=${
-          this.submit.brandid
-        }`,
+      this.priceGet(
+        `Dealer/getSeriesCategory.aspx?bid=${this.submit.brandid}`,
         res => {
+          console.log(res)
           if (res.status === 200) {
             this.allSeries = res.data
             this.showSeries = true
           }
+        },
+        e => {
+          console.log(e)
         }
       )
     },
@@ -242,10 +255,10 @@ export default {
         this.dialogShowToast = true
         return
       }
-      this.getData(
-        `https://dealer-api.360che.com/Dealer/submitDealerClues.aspx?relname=${
-          this.name
-        }&tel=${this.telphone}&provincesn=${this.submit.provincesn}&citysn=${
+      this.priceGet(
+        `Dealer/submitDealerClues.aspx?relname=${this.name}&tel=${
+          this.telphone
+        }&provincesn=${this.submit.provincesn}&citysn=${
           this.submit.citysn
         }&seriesextendid=${this.submit.seriesid}&brandid=${
           this.submit.brandid
@@ -280,31 +293,31 @@ export default {
     height: 100%;
   }
   .item-content{
-    padding: 0 32px;
+    padding: 0 16px;
     background: #fff;
   }
   .item{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 86px;
-    border-bottom: 2px solid #EDEDED;
+    height: 43px;
+    border-bottom: 1px solid #EDEDED;
   }
   .item:last-child{
-    height: 88px;
+    height: 44px;
     border-bottom: 0;
   }
   .item span{
-    font-size: 32px;
+    font-size: 16px;
     color: #5C6066;
   }
   .item input{
-    margin-left: 24px;
+    margin-left: 12px;
     flex: 1;
     color: #17181A;
   }
   .item span.input{
-    margin-left: 24px;
+    margin-left: 12px;
     flex: 1;
     color: #D1D1D1;
     overflow: hidden;
@@ -319,7 +332,7 @@ export default {
   }
   .item span.arrow{
     font-family: 'carMall';
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
   }
   .submitInfo{
@@ -327,11 +340,11 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 96px;
-    line-height: 96px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
     background: #508DFD;
-    font-size: 36px;
+    font-size: 18px;
     color: #fff;
   }
 </style>

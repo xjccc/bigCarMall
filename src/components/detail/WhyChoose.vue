@@ -4,7 +4,7 @@
     <div class="why-content">
       <template v-for="item in whyData">
         <div class="item">
-          <figure>
+          <figure :class="`figure_${item.id}`">
             <img :src="item.img">
           </figure>
           <span class="item-title">{{item.title}}</span>
@@ -40,7 +40,7 @@ export default {
       {
         id: 4,
         img: 'https://s.kcimg.cn/bigCarMall/image/choose-back-money.png',
-        title: '随时退定金',
+        title: '随时退订金',
         detail: '不买车随时退订金，无须担心资金风险。'
       }
     ]
@@ -49,8 +49,8 @@ export default {
 </script>
 <style scoped>
   .why-choose{
-    padding: 24px 32px 32px;
-    margin-top: 16px;
+    padding: 12px 16px 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -59,47 +59,53 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 16px;
     color: #5C6066;
-    line-height: 60px;
+    line-height: 30px;
   }
   .title:before{
-    margin-right: 16px;
+    margin-right: 8px;
     content: "";
-    width: 112px;
-    height: 2px;
+    width: 56px;
+    height: 1px;
     background: #E5E5E5;
   }
   .title:after{
-    margin-left: 16px;
+    margin-left: 8px;
     content: "";
-    width: 112px;
-    height: 2px;
+    width: 56px;
+    height: 1px;
     background: #E5E5E5;
   }
   .why-content{
-    margin-top: 14px;
+    margin-top: 7px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   .item{
-    margin-top: 18px;
-    padding: 24px;
-    width: 334px;
-    height: 260px;
-    border: 2px solid #EDEDED;
-    border-radius: 8px;
+    margin-top: 9px;
+    padding: 12px;
+    width: calc(50vw - 20px);
+    height: 130px;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
     box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
   }
+  .item:nth-child(2n-1){
+    margin-right: 4px;
+  }
+  .item:nth-child(2n){
+    margin-left: 4px;
+  }
   .item figure{
     position: absolute;
-    right: 24px;
-    bottom: 24px;
+    right: 12px;
+    bottom: 12px;
     z-index: 0;
   }
   .item figure img{
@@ -108,18 +114,34 @@ export default {
     vertical-align: middle;
     object-fit: cover;
   }
+  .item .figure_1{
+    width: 70px;
+    height: 46px;
+  }
+  .item .figure_2{
+    width: 60px;
+    height: 60px;
+  }
+  .item .figure_3{
+    width: 56px;
+    height: 63px;
+  }
+  .item .figure_4{
+    width: 52px;
+    height: 60px;
+  }
   .item-title{
-    margin-top: 8px;
-    font-size: 36px;
+    margin-top: 4px;
+    font-size: 18px;
     font-weight: bold;
     color: #17181A;
-    line-height: 52px;
+    line-height: 26px;
   }
   .item-detail{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #5C6066;
-    line-height: 36px;
+    line-height: 18px;
     z-index: 1;
   }
 </style>

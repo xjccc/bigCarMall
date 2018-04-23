@@ -39,19 +39,21 @@ export default {
   .car-info{
     display: flex;
     flex-direction: column;
-    padding: 24px 32px 0;
+    padding: 12px 16px 0;
     background: #fff;
   }
   .title{
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
     font-weight: bold;
-    line-height: 48px;
+    line-height: 24px;
     word-break: break-all;
     text-overflow:ellipsis;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .price{
@@ -59,62 +61,62 @@ export default {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 8px 0;
-    font-size: 32px;
+    padding: 4px 0;
+    font-size: 16px;
     color: #17181A;
   }
   .price span{
-    font-size: 48px;
+    font-size: 24px;
     color: #FF6600;
-    line-height: 60px;
+    line-height: 30px;
     font-weight: bold;
   }
   .price em{
-    margin-left: 8px;
-    font-size: 24px;
+    margin-left: 4px;
+    font-size: 12px;
     color: #A1A9B2;
   }
   .price-tip{
-    padding-bottom: 16px;
-    font-size: 24px;
+    padding-bottom: 8px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
   .price-tip:before{
     font-family: 'carMall';
     content: "\e6b7";
-    margin-right: 8px;
-    width: 24px;
-    height: 24px;
+    margin-right: 4px;
+    width: 12px;
+    height: 12px;
     color: #CFD3D8;
   }
   .gift{
-    padding: 16px 0;
-    border-top: 2px solid #EDEDED;
-    font-size: 24px;
+    padding: 8px 0;
+    border-top: 1px solid #EDEDED;
+    font-size: 12px;
     color: #FF6600;
   }
   .item-footer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 86px;
-    border-top: 2px solid #EDEDED;
+    height: 43px;
+    border-top: 1px solid #EDEDED;
   }
   .level{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .company-name{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;
@@ -123,7 +125,7 @@ export default {
   .dealer-shop:after{
     font-family: 'carMall';
     content: "\e70d";
-    font-size: 24px;
+    font-size: 12px;
     color: #CFD3D8;
   }
 </style>

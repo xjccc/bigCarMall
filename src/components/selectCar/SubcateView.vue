@@ -46,20 +46,20 @@ export default {
     transform: translate3d(0, 0, 0);
   }
   .header {
-    height: 88px;
-    line-height: 88px;
+    height: 44px;
+    line-height: 44px;
     text-align: center;
-    font-size: 36px;
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.06), 0 -2px 0 0 #F5F5F5;
+    font-size: 18px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.06), 0 -1px 0 0 #F5F5F5;
   }
   .back {
     position: absolute;
     left: 0;
     top: 0;
-    width: 120px;
-    height: 88px;
+    width: 60px;
+    height: 44px;
     color: #17181A;
-    line-height: 88px;
+    line-height: 44px;
     font-family: 'carMall'
   }
   .content{
@@ -68,17 +68,17 @@ export default {
     -webkit-overflow-scrolling: touch;
   }
   .list-item{
-    margin-left: 32px;
-    height: 86px;
-    line-height: 86px;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 28px;
+    margin-left: 16px;
+    height: 43px;
+    line-height: 43px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 14px;
     color: #17181A;
   }
 
   .list-item:last-child{
-    height: 88px;
-    line-height: 88px;
+    height: 44px;
+    line-height: 44px;
     border-bottom: none;
   }
 

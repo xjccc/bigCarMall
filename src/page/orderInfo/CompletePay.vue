@@ -88,7 +88,18 @@ export default {
       }
       this.userInfo = this.getStorage('bigCarMallUserInfo')
       this.fetch()
-    }, 100)
+
+      // app传title
+      this.callNativeMethod('onChangeWebTitle', {
+        changeWebTitle: '预约订单'
+      })
+      // 没有地区筛选
+      this.callNativeMethod('onShowLocationInfo', { location: '' })
+      // 不显示分享按钮
+      this.callNativeMethod('onShowShareButton', {
+        isShow: false
+      })
+    }, 800)
   },
   methods: {
     // 进行订单详情请求
@@ -101,6 +112,8 @@ export default {
           if (res.data.isok === '1') {
             this.info = res.data.data
             this.isLoading = false
+          } else {
+            this.$router.go(-2)
           }
         }
       )
@@ -241,22 +254,22 @@ export default {
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
+    padding-bottom: 8px;
   }
   .tips{
-    padding: 0 32px;
-    height: 72px;
-    line-height: 72px;
+    padding: 0 16px;
+    height: 36px;
+    line-height: 36px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   .is-tips{
-    font-size: 24px;
+    font-size: 12px;
     color: #F44336;
   }
   .user-service{
-    font-size: 24px;
+    font-size: 12px;
     color: #508DFD;
     text-decoration: underline;
   }

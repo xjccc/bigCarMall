@@ -43,67 +43,67 @@ export default {
 </script>
 <style scoped>
  .order{
-   padding: 0 32px;
-   margin-top: 16px;
+   padding: 0 16px;
+   margin-top: 8px;
    display: flex;
    flex-direction: column;
    background: #fff;
   }
   .content{
-    padding: 16px 0;
+    padding: 8px 0;
     display: flex;
     flex-direction: column;
   }
   .title{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    height: 78px;
-    line-height: 78px;
-    border-bottom: 2px solid #EDEDED;
+    height: 39px;
+    line-height: 39px;
+    border-bottom: 1px solid #EDEDED;
   }
   .item{
-    height: 60px;
-    line-height: 60px;
+    height: 30px;
+    line-height: 30px;
     display: flex;
     flex-direction: row;
   }
   .item span:first-child{
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
   }
   .item span:last-child{
-    margin-left: 16px;
-    font-size: 28px;
+    margin-left: 8px;
+    font-size: 14px;
     color: #17181A;
   }
   .item .price{
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .item .price span{
-    font-size: 28px;
+    font-size: 14px;
     color: #FF6600;
   }
   .item .price em{
-    margin-left: 10px;
-    font-size: 24px;
+    margin-left: 5px;
+    font-size: 12px;
     color: #A1A9B2;
   }
   .pay-type{
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .item .pay-type .type{
-    margin-left: 8px;
+    margin-left: 4px;
   }
   .icon{
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
   .wx-icon:before{
     position: absolute;
@@ -111,8 +111,8 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e714";
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 20px;
     color: #00B700;
   }
   .zfb-icon:before{
@@ -121,8 +121,8 @@ export default {
     left: 0;
     font-family: 'carMall';
     content: "\e716";
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 20px;
     color: #0799E2;
   }
 </style>

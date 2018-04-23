@@ -33,7 +33,7 @@ export default {
 </script>
 <style scoped>
   .compelete-footer{
-    height: 100px;
+    height: 50px;
     background: #fff;
     box-shadow: 0 0 0 0 #DDDDDD;
   }
@@ -43,9 +43,9 @@ export default {
     align-items: center;
   }
   .get-car{
-    width: 324px;
-    line-height: 100px;
-    font-size: 36px;
+    width: 162px;
+    line-height: 50px;
+    font-size: 18px;
     color: #fff;
     background: #FF6600;
     text-align: center;
@@ -53,36 +53,36 @@ export default {
   .buy-call,.back-money,.concat-us,.us{
     position: relative;
     flex: 1;
-    font-size: 28px;
-    line-height: 100px;
+    font-size: 14px;
+    line-height: 50px;
     color: #5C6066;
     text-align: center;
   }
   .buy-call:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e706";
     color: #5C6066;
-    line-height: 28px;
+    line-height: 14px;
   }
   .buy-call:after,.us:after{
     content: "";
     position: absolute;
-    top: 34px;
+    top: 17px;
     right: 0;
-    width: 2px;
-    height: 36px;
+    width: 1px;
+    height: 18px;
     background: #EDEDED;
   }
   .back-money:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e715";
     color: #5C6066;
-    line-height: 28px;
+    line-height: 14px;
   }
   .concat-us:before{
-    margin-right: 8px;
+    margin-right: 4px;
     font-family: 'carMall';
     content: "\e710";
   }

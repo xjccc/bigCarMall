@@ -2,7 +2,8 @@
   <div class="empty" v-if="showEmpty">
     <img src="https://s.kcimg.cn/bigCarMall/image/empty.png">
     <div class="tips">
-      <span>没找到您要的车</span>
+      <span v-if="$route.name === 'Active'">经销商暂时未发布抵扣券</span>
+      <span v-else>没找到您要的车</span>
       <span>留下您的意向信息，会有经销商与您联系哦～</span>
     </div>
     <div class="get-price" @click="jumpToGetPrice">获取报价</div>
@@ -14,7 +15,7 @@ export default {
   data: () => ({}),
   methods: {
     jumpToGetPrice() {
-      this.$router.push('/home/car/price')
+      this.$router.push('/dacheshi/car/price')
     }
   }
 }
@@ -27,30 +28,30 @@ export default {
     align-items: center;
   }
   .empty img{
-    width: 400px;
-    height: 300px;
+    width: 200px;
+    height: 150px;
   }
   .empty .tips{
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .empty span{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
   .get-price{
-    margin-top: 32px;
-    width: 186px;
-    height: 66px;
-    line-height: 66px;
+    margin-top: 16px;
+    width: 93px;
+    height: 33px;
+    line-height: 33px;
     text-align: center;
     background: #fff;
-    border: 2px solid #508DFD;
-    border-radius: 8px;
-    font-size: 32px;
+    border: 1px solid #508DFD;
+    border-radius: 4px;
+    font-size: 16px;
     color: #508DFD;
   }
 </style>

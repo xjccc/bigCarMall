@@ -29,11 +29,11 @@ export default {
 </script>
 <style scoped>
   .reset{
-    padding: 0 24px;
+    padding: 0 12px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-height: 96px;
+    min-height: 48px;
   }
   .item-content{
     flex: 1;
@@ -45,40 +45,40 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-right: 16px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    padding: 12px 16px;
+    margin-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding: 6px 8px;
     background: #fff;
   }
   .item-name{
-    width: 120px;
+    width: 60px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 24px;
+    font-size: 12px;
     color: #17181A;
-    line-height: 40px;
+    line-height: 20px;
   }
   .close{
     font-family: 'carMall';
-    font-size: 24px;
+    font-size: 12px;
     color: #FF6600;
-    margin-left: 10px;
+    margin-left: 5px;
   }
   .reset-name{
-    width: 80px;
-    font-size: 24px;
+    width: 40px;
+    font-size: 12px;
     color: #508DFD;
-    height: 80px;
-    line-height: 80px;
+    height: 40px;
+    line-height: 40px;
     text-align: right;
   }
   .reset-name:before{
     font-family: 'carMall';
     content: "\e717";
-    margin-right: 4px;
-    font-size: 24px;
+    margin-right: 2px;
+    font-size: 12px;
     color: #508DFD;
   }
 </style>

@@ -14,18 +14,25 @@ export default {
       }
     },
     sendData2Native(data, callback) {               //和app通信
+      try {
         window.WebViewJavascriptBridge.send(data, callback)
+      } catch (e) {
+
+      }
     },
     callNativeMethod(method, param, callback) {        //和app通信
+      try {
         window.WebViewJavascriptBridge.callHandler(method, param,callback)
+      } catch (e) {
+
+      }
     },
     // 监听app回调
     connectWebViewJavascriptBridge(callback) {
       if (window.WebViewJavascriptBridge) {
         callback(WebViewJavascriptBridge)
       } else {
-        document.addEventListener(
-          'WebViewJavascriptBridgeReady',
+        document.addEventListener('WebViewJavascriptBridgeReady',
           function() {
             callback(WebViewJavascriptBridge)
           },false)
@@ -38,7 +45,8 @@ export default {
     ajax(url, success, error) {
       axios({
         method: 'get',
-        url: `${this.ajaxUrl()}/bigchemall/${url}`
+        url: `${this.ajaxUrl()}/bigchemall/${url}`,
+        withCredentials: false
       })
         .then(success)
         .catch(error)
@@ -46,7 +54,18 @@ export default {
     getData(url, success, error) {
       axios({
         method: 'get',
-        url: `${url}`
+        url: `${url}`,
+        withCredentials: false
+      })
+        .then(success)
+        .catch(error)
+    },
+    // 获取报价页面请求
+    priceGet(url, success, error){
+      axios({
+        method: 'get',
+        url: `${this.ajaxUrl()}/${url}`,
+        withCredentials: false
       })
         .then(success)
         .catch(error)
@@ -66,7 +85,8 @@ export default {
       axios({
         method: 'post',
         url: `${this.ajaxUrl()}${url}`,
-        data: qs.stringify(data)
+        data: qs.stringify(data),
+        withCredentials: false
       })
         .then(success)
         .catch(error)

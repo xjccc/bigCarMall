@@ -4,7 +4,7 @@
     <div class="content">
       <template v-for="item in buyData">
         <div class="item">
-          <figure>
+          <figure :class="`figure_${item.id}`">
             <img :src="item.img">
           </figure>
           <div class="item-name">
@@ -52,8 +52,8 @@ export default {
 </script>
 <style scoped>
   .buy-process{
-    padding: 24px 0 32px;
-    margin-top: 16px;
+    padding: 12px 0 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     background: #fff;
@@ -62,48 +62,71 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 16px;
     color: #5C6066;
-    line-height: 60px;
+    line-height: 30px;
   }
   .title:before{
-    margin-right: 16px;
+    margin-right: 8px;
     content: "";
-    width: 112px;
-    height: 2px;
+    width: 56px;
+    height: 1px;
     background: #E5E5E5;
   }
   .title:after{
-    margin-left: 16px;
+    margin-left: 8px;
     content: "";
-    width: 112px;
-    height: 2px;
+    width: 56px;
+    height: 1px;
     background: #E5E5E5;
   }
   .content{
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
     flex-direction: row;
   }
   .item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
-    text-align: center;
+  }
+  .item .figure_1{
+    width: 50px;
+    height: 32px;
+  }
+  .item .figure_2{
+    width: 46px;
+    height: 32px;
+  }
+  .item .figure_3{
+    width: 47px;
+    height: 32px;
+  }
+  .item .figure_4{
+    width: 46px;
+    height: 32px;
+  }
+  .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .item-name{
-    margin-top: 24px;
-    font-size: 24px;
+    margin-top: 12px;
+    font-size: 12px;
     color: #17181A;
-    line-height: 36px;
+    line-height: 18px;
   }
   .item-num{
-    font-size: 32px;
+    font-size: 16px;
     font-weight: bold;
   }
   .item-detail{
-    padding: 0 16px;
-    margin-top: 8px;
-    font-size: 24px;
+    padding: 0 8px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 32px;
+    line-height: 16px;
   }
 </style>

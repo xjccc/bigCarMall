@@ -40,22 +40,27 @@ export default {
     background: #fff;
   }
   .item-content{
-    margin-top: 20px;
-    padding: 0 32px;
+    margin-top: 10px;
+    padding: 0 16px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   .item{
-    margin-bottom: 32px;
-    width: 330px;
-    height: 360px;
+    width: calc( 50vw - 20px);
+    margin-bottom: 16px;
+    height: 180px;
     display: flex;
     flex-direction: column;
   }
+  .item:first-child{
+    margin-right: 4px;
+  }
+  .item:last-child{
+    margin-left: 4px;
+  }
   .item figure{
-    width: 330px;
-    height: 220px;
+    height: 110px;
   }
   .item figure img{
     width: 100%;
@@ -65,27 +70,29 @@ export default {
   }
   .descripe{
     flex: 1;
-    margin-top: 16px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .detail{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    line-height: 40px;
+    line-height: 20px;
     text-overflow:ellipsis;
     word-break: break-all;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .price{
     font-weight: bold;
-    margin-top: 4px;
-    font-size: 28px;
+    margin-top: 2px;
+    font-size: 14px;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
   }
 </style>

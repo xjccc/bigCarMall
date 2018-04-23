@@ -45,8 +45,8 @@ export default {
     top: 50%;
     transform: translate(-50%,-50%);
     width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
+    max-width: 300px;
+    border-radius: 3px;
     text-align: center;
     overflow: hidden;
     display: flex;
@@ -55,33 +55,33 @@ export default {
     z-index: 8;
   }
   .dialog-content{
-    padding: 40px 32px;
-    min-height: 80px;
-    font-size: 30px;
+    padding: 20px 16px;
+    min-height: 40px;
+    font-size: 15px;
     line-height: 1.3;
     color: #353535;
     word-wrap: break-word;
     word-break: break-all;
   }
   .dialog-footer{
-    border-top: 2px solid #EDEDED;
-    font-size: 36px;
-    line-height: 96px;
+    border-top: 1px solid #EDEDED;
+    font-size: 18px;
+    line-height: 48px;
     text-align: center;
     color: #0BB20C;
   }
   .choose{
     display: flex;
     flex-direction: row;
-    border-top: 2px solid #EDEDED;
-    font-size: 36px;
-    line-height: 96px;
+    border-top: 1px solid #EDEDED;
+    font-size: 18px;
+    line-height: 48px;
   }
   .choose span{
     flex:1;
   }
   .true-choose{
     color: #0BB20C;
-    border-left: 2px solid #EDEDED;
+    border-left: 1px solid #EDEDED;
   }
 </style>

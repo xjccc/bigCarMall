@@ -51,18 +51,18 @@ export default {
 <style scoped>
   .item-car{
     position: relative;
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: column;
-    padding: 0 32px;
+    padding: 0 16px;
     background: #fff;
   }
   .status-img{
     position: absolute;
     right: 0;
     top: 0;
-    width: 150px;
-    height: 120px;
+    width: 75px;
+    height: 60px;
   }
   .status-img img{
     width: 100%;
@@ -74,21 +74,21 @@ export default {
     opacity: 0.6;
   }
   .order-num{
-    height: 76px;
-    line-height: 76px;
-    border-bottom: 2px solid #EDEDED;
-    font-size: 28px;
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #EDEDED;
+    font-size: 14px;
     color: #A1A9B2;
   }
   .item-front{
     display: flex;
     flex-direction: row;
-    padding: 16px 0;
-    border-bottom: 2px solid #EDEDED;
+    padding: 8px 0;
+    border-bottom: 1px solid #EDEDED;
   }
   .item-front figure{
-    width: 240px;
-    height: 160px;
+    width: 120px;
+    height: 80px;
   }
   .item-front figure img{
     width: 100%;
@@ -97,7 +97,7 @@ export default {
     vertical-align: middle;
   }
   .item-content{
-    margin-left: 16px;
+    margin-left: 8px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -105,22 +105,24 @@ export default {
     overflow: hidden;
   }
   .title{
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
-    height: 80px;
-    line-height: 40px;
+    height: 40px;
+    line-height: 20px;
     text-overflow:ellipsis;
     word-break: break-all;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .descript{
-    margin-top: 8px;
-    font-size: 24px;
+    margin-top: 4px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 24px;
+    line-height: 12px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -128,17 +130,17 @@ export default {
   }
   .descript span{
     position: relative;
-    width: 2px;
-    height: 24px;
-    margin: 0 16px;
+    width: 1px;
+    height: 12px;
+    margin: 0 8px;
   }
   .descript span:before{
     content: "";
     position: absolute;
-    top: 2px;
+    top: 1px;
     left: 0;
-    height: 20px;
-    width: 2px;
+    height: 10px;
+    width: 1px;
     background: #EDEDED;
   }
   .descript .engine{
@@ -147,41 +149,41 @@ export default {
     text-overflow: ellipsis;
   }
   .price{
-    margin-top: 8px;
+    margin-top: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   .price-front{
-    font-size: 24px;
+    font-size: 12px;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
   }
   .true-price{
-    font-size: 28px;
+    font-size: 14px;
     color: #FF6600;
-    line-height: 40px;
+    line-height: 20px;
   }
   .item-footer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 80px;
+    height: 40px;
   }
   .level{
-    margin-right: 8px;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 5px 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 2px;
     color: #508DFD;
     background: #F9FBFF;
-    border: 2px solid #CADDFF;
-    border-radius: 4px;
+    border: 1px solid #CADDFF;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   .company-name{
     flex: 1;
-    font-size: 28px;
+    font-size: 14px;
     color: #17181A;
     white-space: nowrap;
     overflow: hidden;

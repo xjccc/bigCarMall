@@ -1,7 +1,7 @@
 <template>
   <div class="choose-car">
     <!-- 头部信息 -->
-    <top-header :type="'location'" :title="'选车'" :data="cityData" @location="showSelectLocation"></top-header>
+    <top-header :type="'location'" :title="'一口价'" :data="cityData" @location="showSelectLocation"></top-header>
     <!-- 筛选 -->
     <filter-header @filter="filterType"></filter-header>
     <!-- 重置 -->
@@ -172,6 +172,20 @@ export default {
     } else {
       this.getPriceRange()
     }
+
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '一口价'
+    })
+    this.callNativeMethod('onShowLocationInfo', {
+      location: city && city.cityName ? city.cityName : '全国',
+      url:
+        'https://dealerm.360che.com/dacheshitest/dist/index.htm#/dacheshi/app/location'
+    })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   mounted() {
     // 设置标题头
@@ -184,6 +198,28 @@ export default {
     }${
       this.resetList[1] ? this.resetList[1] : '货车'
     }价格及图片大全_手机卡车之家大车市`
+    // app回调
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler(
+        'onLocationResultCallBack',
+        (data, responseCallback) => {
+          if (data) {
+            // 获取选择地区缓存
+            let city = this.getStorage('bigmallChooseCity')
+            if (city) {
+              this.submit.provincesn = city.provincesn
+              this.submit.citysn = city.citysn
+              this.cityData.province = city.provinceName
+              this.cityData.city = city.cityName
+            } else {
+              this.submit.provincesn = ''
+              this.submit.citysn = ''
+            }
+            this.resetFetch()
+          }
+        }
+      )
+    })
   },
   methods: {
     // 显示地区弹层
@@ -337,7 +373,7 @@ export default {
       this.chooseInfo.submit = this.submit
       this.chooseInfo.resetList = this.resetList
       this.setStorage('myChooseCarInfo', this.chooseInfo)
-      this.$router.push({ path: `/home/carDetail/${id}` })
+      this.$router.push({ path: `/dacheshi/carDetail/${id}` })
     },
     // 选择常用地区
     chooseUsed(submit) {
@@ -425,7 +461,7 @@ export default {
     overflow: hidden;
   }
   .car-content{
-    padding-bottom: 16px;
+    padding-bottom: 8px;
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

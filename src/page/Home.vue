@@ -1,7 +1,7 @@
 <template>
   <div class="home" v-cloak>
     <div class="container" ref="container" @scroll="containScroll">
-      <!-- 顶部按键 -->
+      <!-- 顶部按键 v-if="getType() !== 'app'" -->
       <div class="home-top" v-if="getType() !== 'app'">
         <div class="select-city" @click="chooseProvince">
           <span class="city">{{cityData.city ? cityData.city : '全国'}}</span>
@@ -26,7 +26,7 @@
       <!-- 经销商 -->
       <dealer :dealer="dealerList" v-if="dealerList && dealerList.length"></dealer>
       <!-- 页脚 -->
-      <home-footer></home-footer>
+      <home-footer></dacheshi-footer>
       <!-- 页面loading -->
       <div class="loading" v-if="isLoading">
         <v-loading></v-loading>
@@ -42,14 +42,15 @@
   </div>
 </template>
 <script>
-import Swiper from '@/components/Home/Swiper'
-import Quoted from '@/components/Home/newQuoted/Quoted'
-import Discount from '@/components/Home/newDiscount/Discount'
-import SaleNews from '@/components/Home/newSaleNews/SaleNews'
-import Dealer from '@/components/Home/dealer/Dealer'
-import HomeFooter from '@/components/Home/footer/Footer'
+import Swiper from '@/components/home/Swiper'
+import Quoted from '@/components/home/newQuoted/Quoted'
+import Discount from '@/components/home/newDiscount/Discount'
+import SaleNews from '@/components/home/newSaleNews/SaleNews'
+import Dealer from '@/components/home/dealer/Dealer'
+import HomeFooter from '@/components/home/footer/Footer'
 import Location from '@/components/Location'
-import TruckLogin from '../../node_modules/login'
+import TruckLogin from '../mixins/login.js'
+let flag = false
 
 export default {
   components: {
@@ -62,6 +63,7 @@ export default {
     Location
   },
   data: () => ({
+    // loading
     isLoading: true,
     // 用户userid
     userid: null,
@@ -117,12 +119,12 @@ export default {
     if (activeLogin) {
       let id = activeLogin.split('_')[1]
       this.removeStorage('activeLogin')
-      this.$router.push({ path: `/home/active/detail/${id}` })
+      this.$router.push({ path: `/dacheshi/active/detail/${id}` })
     }
     if (detailLogin) {
       let id = detailLogin.split('_')[1]
       this.removeStorage('detailLogin')
-      this.$router.push({ path: `/home/carDetail/${id}` })
+      this.$router.push({ path: `/dacheshi/carDetail/${id}` })
     }
     // 获取选择地区缓存
     let city = this.getStorage('bigmallChooseCity')
@@ -163,6 +165,8 @@ export default {
     this.getDealerList()
     // 获取文章列表
     this.getArticalList()
+    // 更改app标题
+    this.setTitle()
   },
   mounted() {
     // 获取用户userid
@@ -172,8 +176,63 @@ export default {
     ).content = `卡车之家大车市】为您提供${new Date().getFullYear()}(${
       this.cityData.city ? this.cityData.city : '全国'
     })载货车、牵引车、自卸车等货车报价、优惠、促销信息。卡车之家大车市，值得信赖的线上购车商城。`
+    // app回调
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler(
+        'onLocationResultCallBack',
+        (data, responseCallback) => {
+          if (data) {
+            // 获取选择地区缓存
+            let city = this.getStorage('bigmallChooseCity')
+            if (city) {
+              this.submit.provincesn = city.provincesn
+              this.submit.citysn = city.citysn
+              this.cityData.province = city.provinceName
+              this.cityData.city = city.cityName
+            } else {
+              this.submit.provincesn = ''
+              this.submit.citysn = ''
+            }
+            // 获取最新报价
+            this.getNewPrice()
+            // 获取最新优惠
+            this.getNewDiscount()
+            // 获取经销商
+            this.getDealerList()
+            // 获取文章列表
+            this.getArticalList()
+          }
+        }
+      )
+    })
   },
   methods: {
+    // 改变app title
+    setTitle() {
+      // app传title
+      this.callNativeMethod('onChangeWebTitle', {
+        changeWebTitle: '大车市'
+      })
+      // 不显示分享按钮
+      this.callNativeMethod('onShowShareButton', {
+        isShow: false
+      })
+      // app调用位置弹层
+      this.callNativeMethod('onShowLocationInfo', {
+        location: this.cityData.city ? this.cityData.city : '全国',
+        url:
+          'https://dealerm.360che.com/dacheshitest/dist/index.htm#/dacheshi/app/location'
+      })
+      let timer = setTimeout(() => {
+        if (!flag) {
+          this.setTitle()
+        }
+        if (window.WebViewJavascriptBridge) {
+          flag = true
+          timer && clearTimeout(timer)
+        }
+      }, 400)
+    },
     // 进行微信分享
     shareHomePage() {
       let wx = window.wx
@@ -214,13 +273,17 @@ export default {
               this.removeStorage('bigCarMallUserInfo')
             }
           }
-          // 请求完用户信息，进行取消弹层
-          this.isLoading = false
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
         },
         e => {
           console.log(e, 'catch')
-          // 失败后，进行取消弹层
-          this.isLoading = false
+          this.$nextTick(() => {
+            // 请求完用户信息，进行取消弹层
+            this.isLoading = false
+          })
         }
       )
     },
@@ -371,9 +434,9 @@ export default {
             TruckLogin.ToLogin()
             return
           }
-          this.$router.push(`/home/${insidetype}`)
+          this.$router.push(`/dacheshi/${insidetype}`)
         }
-        this.$router.push(`/home/${insidetype}`)
+        this.$router.push(`/dacheshi/${insidetype}`)
       } else {
         window.location.href = url
       }
@@ -414,7 +477,7 @@ export default {
     },
     // 意见反馈
     suggest() {
-      this.$router.push('/home/mine/suggest')
+      this.$router.push('/dacheshi/mine/suggest')
     }
   }
 }
@@ -427,22 +490,22 @@ export default {
   }
   .home-top{
     position: relative;
-    padding: 0 32px;
-    height: 88px;
-    line-height: 88px;
+    padding: 0 16px;
+    height: 44px;
+    line-height: 44px;
     background: #fff;
   }
   .select-city{
     position: absolute;
     top: 0;
-    left: 68px;
-    line-height: 88px;
+    left: 34px;
+    line-height: 44px;
   }
   .city{
     display: inline-block;
-    max-width: 200px;
-    height: 88px;
-    font-size: 28px;
+    max-width: 100px;
+    height: 44px;
+    font-size: 14px;
     color: #17181A;
     text-align: left;
     overflow: hidden;
@@ -451,23 +514,23 @@ export default {
   }
   .select-city:before{
     position: absolute;
-    left: -36px;
-    top: 32px;
+    left: -18px;
+    top: 16px;
     font-family: 'carMall';
     content: "\e71a";
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 14px;
+    line-height: 14px;
     color: #FF6600;
   }
   .title{
     flex: 1;
-    font-size: 36px;
+    font-size: 18px;
     color: #333;
     font-weight: bold;
     text-align: center;
   }
   .nav-icon{
-    padding: 36px 0;
+    padding: 18px 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -481,39 +544,39 @@ export default {
     align-items: center;
   }
   .item-title{
-    font-size: 24px;
+    font-size: 12px;
     color: #17181A;
-    line-height: 32px;
+    line-height: 16px;
   }
   .select-car{
-    width: 88px;
-    height: 60px;
-    margin-bottom: 24px;
+    width: 44px;
+    height: 30px;
+    margin-bottom: 12px;
     object-fit: cover;
   }
   .select-active{
-    width: 60px;
-    height: 68px;
+    width: 30px;
+    height: 34px;
     object-fit: cover;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .select-dealer{
-    width: 64px;
-    height: 68px;
+    width: 32px;
+    height: 34px;
     object-fit: cover;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .select-mine{
-    width: 60px;
-    height: 68px;
+    width: 30px;
+    height: 34px;
     object-fit: cover;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
   .fixed-btn{
     position: fixed;
-    right: 24px;
-    width: 100px;
-    height: 100px;
+    right: 12px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     box-sizing: border-box;
     border: 1px solid #EDEDED;
@@ -524,37 +587,37 @@ export default {
   .to-top{
     background: rgba(0,0,0,0.80);
     border: none;
-    bottom: 452px;
+    bottom: 226px;
   }
   .to-top:after{
     position: absolute;
-    top: 22px;
-    left: 31px;
+    top: 11px;
+    left: 15px;
     font-family: 'carMall';
-    font-size: 38px;
+    font-size: 19px;
     content: "\e70e";
     color: #fff;
   }
   .concat-us{
     background: rgba(255,255,255,0.90);
-    bottom: 332px;
+    bottom: 166px;
     font-size: 0;
   }
   .concat-us span{
-    font-size: 24px;
+    font-size: 12px;
     color: #5C6066;
-    line-height: 36px;
+    line-height: 18px;
   }
   .concat-us span:before{
-    margin-top: 16px;
+    margin-top: 8px;
     display: block;
     font-family: 'carMall';
     content: "\e710";
-    font-size: 28px;
+    font-size: 14px;
     color: #5C6066;
   }
   .suggest{
-    bottom: 214px;
+    bottom: 107px;
     background: rgba(255,255,255,0.90);
     display: flex;
     flex-direction: column;
@@ -562,10 +625,10 @@ export default {
     justify-content: center;
   }
   .suggest span{
-    width: 48px;
-    font-size: 24px;
+    width: 24px;
+    font-size: 12px;
     color: #5C6066;
-    line-height: 24px;
+    line-height: 12px;
   }
   .show-none{
     display: none;

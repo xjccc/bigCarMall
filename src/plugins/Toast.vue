@@ -31,9 +31,9 @@ export default {
 .toast {
     position: fixed;
     z-index: 20;
-    padding: 20px;
-    width: 200px;
-    min-height: 200px;
+    padding: 10px;
+    width: 100px;
+    min-height: 100px;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -47,20 +47,20 @@ export default {
     justify-content: space-between;
 }
 .icon{
-  margin-top: 30px;
+  margin-top: 15px;
   font-family: 'carMall';
   color: #fff;
-  font-size: 60px;
+  font-size: 30px;
 }
 .loading-icon{
-  margin-top: 30px;
-  width: 60px;
-  height: 60px;
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
   background: transparent;
 }
 .loading-icon img{
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   vertical-align: middle;
   object-fit: cover;
 }

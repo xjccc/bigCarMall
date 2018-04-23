@@ -10,7 +10,7 @@
 </template>
 <script>
 import ItemHeader from '@/components/ItemHeader'
-import ItemSale from '@/components/Home/newSaleNews/ItemSale'
+import ItemSale from '@/components/home/newSaleNews/ItemSale'
 
 export default {
   props: ['list'],
@@ -24,7 +24,7 @@ export default {
   methods: {
     getMoreSaleNews() {
       // 促销活动
-      this.$router.push('/home/discountActive')
+      this.$router.push('/dacheshi/discountActive')
     }
   }
 }
@@ -34,6 +34,6 @@ export default {
     background: #fff;
   }
   .news-content{
-    padding-bottom: 12px;
+    padding-bottom: 6px;
   }
 </style>

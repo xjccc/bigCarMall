@@ -27,18 +27,17 @@ export default {
   .item{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    padding: 32px 32px 30px;
+    padding: 16px 16px 15px;
     background: #fff;
-    border-bottom: 2px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
   }
   .item:last-child{
-    padding: 32px;
+    padding: 16px;
     border-bottom: 0;
   }
   .item figure{
-    width: 224px;
-    height: 150px;
+    width: 112px;
+    height: 75px;
   }
   .item figure img{
     width: 100%;
@@ -48,40 +47,42 @@ export default {
   }
   .item-content{
     flex: 1;
-    margin-left: 16px;
+    margin-left: 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .title{
-    font-size: 32px;
+    font-size: 16px;
     color: #17181A;
-    line-height: 48px;
+    line-height: 24px;
     text-overflow:ellipsis;
     overflow:hidden;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
+    /*! autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: on */
     -webkit-line-clamp:2;
   }
   .info{
-    margin-top: 18px;
+    margin-top: 9px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
   .name{
-    width: 280px;
+    width: 140px;
     white-space: nowrap;
     text-overflow:ellipsis;
     overflow:hidden;
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
   .time{
-    font-size: 24px;
+    font-size: 12px;
     color: #A1A9B2;
-    line-height: 36px;
+    line-height: 18px;
   }
 </style>

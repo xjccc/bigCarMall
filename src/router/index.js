@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 // 首页
 import Home from '@/page/Home'
 // 选车
@@ -33,109 +34,120 @@ import MyActive from '@/page/mine/MyActive'
 // 意见反馈
 import Suggest from '@/page/mine/Suggest'
 
+// app端的选择城市页面
+import AppLocation from '@/page/appLocation/Location'
+
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/dacheshi'
     },
     // 首页
     {
-      path: '/home',
+      path: '/dacheshi',
       name: 'Home',
       component: Home
     },
     // 选车
     {
-      path: '/home/car',
+      path: '/dacheshi/car',
       name: 'ChooseCar',
       component: ChooseCar
     },
     // 获取报价
     {
-      path: '/home/car/price',
+      path: '/dacheshi/car/price',
       name: 'GetPrice',
       component: GetPrice
     },
     // 促销活动
     {
-      path: '/home/discountActive',
+      path: '/dacheshi/discountActive',
       name: 'DiscountActive',
       component: DiscountActive
     },
     // 车辆详情
     {
-      path: '/home/carDetail/:id',
+      path: '/dacheshi/carDetail/:id',
       name: 'Detail',
       component: Detail
     },
     {
       // 确认支付
-      path: '/home/orderInfo/confirm',
+      path: '/dacheshi/orderInfo/confirm',
       name: 'Confirm',
       component: Confirm
     },
     {
       // 支付完成
-      path: '/home/orderInfo/complete/:id',
+      path: '/dacheshi/orderInfo/complete/:id',
       name: 'CompletePay',
       component: CompletePay
     },
     // 活动列表
     {
-      path: '/home/active',
+      path: '/dacheshi/active',
       name: 'Active',
       component: Active
     },
     // 活动详情
     {
-      path: '/home/active/detail/:id',
+      path: '/dacheshi/active/detail/:id',
       name: 'ActiveDetail',
       component: ActiveDetail
     },
     // 活动支付信息
     {
-      path: '/home/active/confirm',
+      path: '/dacheshi/active/confirm',
       name: 'ActiveComfirm',
       component: ActiveComfirm
     },
     // 活动支付W按成
     {
-      path: '/home/active/complete/:id',
+      path: '/dacheshi/active/complete/:id',
       name: 'ActiveCompletePay',
       component: ActiveCompletePay
     },
     // 经销商报价
     {
-      path: '/home/dealer',
+      path: '/dacheshi/dealer',
       name: 'Dealer',
       component: Dealer
     },
     // 个人中心
     {
-      path: '/home/mine',
+      path: '/dacheshi/mine',
       name: 'Mine',
       component: Mine
     },
     // 我买的车
     {
-      path: '/home/mine/mycar',
+      path: '/dacheshi/mine/mycar',
       name: 'MyBuy',
       component: MyBuy
     },
     // 我参加的活动
     {
-      path: '/home/mine/myactive',
+      path: '/dacheshi/mine/myactive',
       name: 'MyActive',
       component: MyActive
     },
     // 意见反馈
     {
-      path: '/home/mine/suggest',
+      path: '/dacheshi/mine/suggest',
       name: 'Suggest',
       component: Suggest
+    },
+    // app端选择地区
+    {
+      path: '/dacheshi/app/location',
+      name: 'AppLocation',
+      component: AppLocation
     }
   ]
 })
+
+export default router

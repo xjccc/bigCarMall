@@ -37,7 +37,7 @@
 <script>
 import TopHeader from '@/components/TopHeader'
 import FilterHeader from '@/components/dealer/FilterHeader'
-import ItemDealer from '@/components/Home/dealer/ItemDealer'
+import ItemDealer from '@/components/home/dealer/ItemDealer'
 import BrandView from '@/components/selectCar/BrandView'
 import Location from '@/components/Location'
 let flag = false
@@ -130,12 +130,47 @@ export default {
     // 获取品牌侧边栏字母
     let brandletter = this.getStorage('allbrandlistletters')
     this.allBrandLetter = brandletter
+    // app传title
+    this.callNativeMethod('onChangeWebTitle', {
+      changeWebTitle: '经销商报价'
+    })
+    this.callNativeMethod('onShowLocationInfo', {
+      location: city && city.cityName ? city.cityName : '全国',
+      url:
+        'https://dealerm.360che.com/dacheshitest/dist/index.htm#/dacheshi/app/location'
+    })
+    // 不显示分享按钮
+    this.callNativeMethod('onShowShareButton', {
+      isShow: false
+    })
   },
   mounted() {
     // 设置标题头
     document.title = `${
       this.cityData.city ? this.cityData.city : '全国'
     }经销商报价`
+    // app回调
+    this.connectWebViewJavascriptBridge(bridge => {
+      bridge.registerHandler(
+        'onLocationResultCallBack',
+        (data, responseCallback) => {
+          if (data) {
+            // 获取选择地区缓存
+            let city = this.getStorage('bigmallChooseCity')
+            if (city) {
+              this.submit.provincesn = city.provincesn
+              this.submit.citysn = city.citysn
+              this.cityData.province = city.provinceName
+              this.cityData.city = city.cityName
+            } else {
+              this.submit.provincesn = ''
+              this.submit.citysn = ''
+            }
+            this.resetFetch()
+          }
+        }
+      )
+    })
   },
   methods: {
     // 显示地区弹层
@@ -315,7 +350,7 @@ export default {
       vm.fromDetail = info !== null ? info.fromDetail : false
       if (
         from.name === 'Home' ||
-        (to.path === '/home/dealer' && !vm.fromDetail)
+        (to.path === '/dacheshi/dealer' && !vm.fromDetail)
       ) {
         vm.fetch()
       } else {
@@ -357,21 +392,21 @@ export default {
     flex-direction: column;
   }
   .content{
-    margin-top: 16px;
-    padding-bottom: 16px;
+    margin-top: 8px;
+    padding-bottom: 8px;
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     background: #fff;
   }
   .content .item-dealer:last-child{
-    height: 184px;
+    height: 92px;
     border-bottom: 0;
   }
   .other-title{
-    height: 96px;
-    line-height: 96px;
-    font-size: 28px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
     color: #A1A9B2;
     text-align: center;
     background: #F5F5F5;
